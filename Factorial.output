@@ -1,0 +1,66 @@
+token: BEGINPROG      lexical unit: BEGINPROG
+token: Factorial      lexical unit: PROGNAME
+token: \n             lexical unit: ENDLINE
+token: \n             lexical unit: ENDLINE
+token: \n             lexical unit: ENDLINE
+token: \n             lexical unit: ENDLINE
+token: READ           lexical unit: READ
+token: (              lexical unit: LPAREN
+token: number         lexical unit: VARNAME
+token: )              lexical unit: RPAREN
+token: \n             lexical unit: ENDLINE
+token: result         lexical unit: VARNAME
+token: :=             lexical unit: ASSIGN
+token: 1              lexical unit: NUMBER
+token: \n             lexical unit: ENDLINE
+token: \n             lexical unit: ENDLINE
+token: IF             lexical unit: IF
+token: (              lexical unit: LPAREN
+token: number         lexical unit: VARNAME
+token: >              lexical unit: GT
+token: -              lexical unit: MINUS
+token: 1              lexical unit: NUMBER
+token: )              lexical unit: RPAREN
+token: THEN           lexical unit: THEN
+token: \n             lexical unit: ENDLINE
+token: WHILE          lexical unit: WHILE
+token: number         lexical unit: VARNAME
+token: >              lexical unit: GT
+token: 0              lexical unit: NUMBER
+token: DO             lexical unit: DO
+token: \n             lexical unit: ENDLINE
+token: result         lexical unit: VARNAME
+token: :=             lexical unit: ASSIGN
+token: result         lexical unit: VARNAME
+token: *              lexical unit: TIMES
+token: number         lexical unit: VARNAME
+token: \n             lexical unit: ENDLINE
+token: number         lexical unit: VARNAME
+token: :=             lexical unit: ASSIGN
+token: number         lexical unit: VARNAME
+token: -              lexical unit: MINUS
+token: 1              lexical unit: NUMBER
+token: \n             lexical unit: ENDLINE
+token: ENDWHILE       lexical unit: ENDWHILE
+token: \n             lexical unit: ENDLINE
+token: ELSE           lexical unit: ELSE
+token: \n             lexical unit: ENDLINE
+token: result         lexical unit: VARNAME
+token: :=             lexical unit: ASSIGN
+token: -              lexical unit: MINUS
+token: 1              lexical unit: NUMBER
+token: \n             lexical unit: ENDLINE
+token: ENDIF          lexical unit: ENDIF
+token: \n             lexical unit: ENDLINE
+token: PRINT          lexical unit: PRINT
+token: (              lexical unit: LPAREN
+token: result         lexical unit: VARNAME
+token: )              lexical unit: RPAREN
+token: \n             lexical unit: ENDLINE
+token: ENDPROG        lexical unit: ENDPROG
+token: \n             lexical unit: ENDLINE
+
+Variables
+number	6
+result	7
+
