@@ -9,7 +9,7 @@
 %%
 
 %class LexicalAnalyzer
-%function next_token
+%function nextToken
 
 %type Symbol
 %unicode
@@ -19,8 +19,10 @@
 
 %eofclose
 
-%state YYINITIAL, UNITSTATE, PROGNAMESTATE
 
+%eofval{
+	return new Symbol(LexicalUnit.EOS, yyline, yycolumn);
+%eofval}
 
 
 %init{
@@ -39,23 +41,9 @@ Unit          = {AlphaUpperCase}*
 
 %%
 
-<YYINITIAL> {
-    "BEGINPROG" {
-            System.out.println("token: " + LexicalUnit.BEGINPROG + "\tlexical unit: " + LexicalUnit.BEGINPROG);
-            yybegin(PROGNAMESTATE);
-            return new Symbol(LexicalUnit.BEGINPROG, yyline, yycolumn);
-      }
+"BEGINPROG" {{System.out.println("token: " + yytext() + " lexical unit: " +LexicalUnit.BEGINPROG); return new Symbol(LexicalUnit.BEGINPROG,yyline, yycolumn);}}
+"ENDPROG" {{System.out.println("token: " + yytext() + " lexical unit: " +LexicalUnit.ENDPROG); return new Symbol(LexicalUnit.ENDPROG,yyline, yycolumn);}}
 
-    .       {System.out.println("TEXT: " + yytext());return new Symbol(LexicalUnit.EOS, yyline, yycolumn);}
-}
+"READ" {{System.out.println("token: " + yytext() + " lexical unit: " +LexicalUnit.READ); return new Symbol(LexicalUnit.READ,yyline, yycolumn);}}
 
-<PROGNAMESTATE> {
-        {ProgramName} {
-                System.out.println("token: " + LexicalUnit.PROGNAME + "\tlexical unit: " + LexicalUnit.PROGNAME);
-                return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn);
-        }
-
-        . {System.out.println("TEXT: " + yytext());return new Symbol(LexicalUnit.EOS, yyline, yycolumn);}
-
-
-}
+.           {}

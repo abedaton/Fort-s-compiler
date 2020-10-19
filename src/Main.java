@@ -16,7 +16,9 @@ public class Main {
         java.io.Reader reader = new java.io.InputStreamReader(stream);
         final LexicalAnalyzer analyzer = new LexicalAnalyzer(reader);
         try {
-            analyzer.next_token();
+            while (analyzer.nextToken().getType() !=  LexicalUnit.EOS) {
+              System.out.println("IN analyse");
+            }
         } catch (IOException e){
             System.out.println("erreur");
         }
