@@ -15,12 +15,17 @@ public class Main {
         assert stream != null;
         java.io.Reader reader = new java.io.InputStreamReader(stream);
         final LexicalAnalyzer analyzer = new LexicalAnalyzer(reader);
-        try {
-            while (analyzer.nextToken().getType() !=  LexicalUnit.EOS) {
-              System.out.println("IN analyse");
+        Symbol readingSymbol;
+        while (true) {
+            try {
+                readingSymbol = analyzer.nextToken();
+                if (readingSymbol.getType() == LexicalUnit.EOS) {
+                    break;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("bye");
             }
-        } catch (IOException e){
-            System.out.println("erreur");
         }
     }
 }
