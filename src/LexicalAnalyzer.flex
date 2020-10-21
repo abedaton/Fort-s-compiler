@@ -5,6 +5,9 @@
  *                                                                         *                                                                          *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.HashMap;
 
 %%
 
@@ -24,7 +27,7 @@
 %init}
 
 %{
-    public java.util.Map<String, Integer> variables = new java.util.LinkedHashMap<String, Integer>();
+    public Map<String, Integer> variables = new HashMap<String, Integer>();
     private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
       try {
           System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
@@ -42,8 +45,9 @@
 
 %eof{
     System.out.println("\nVariables");
-    for (String var : variables.keySet()){
-        System.out.println(var + "\t" + variables.get(var));
+    TreeMap<String, Integer> sortedVariables = new TreeMap<String, Integer>(variables);
+    for (Map.Entry<String,Integer> oneVar : sortedVariables.entrySet()){
+        System.out.println(oneVar.getKey() + "\t" + oneVar.getValue());
     }
     System.out.println();
 %eof}
@@ -62,9 +66,9 @@ ProgramName     = [A-Z][a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
 Variables      = {AlphaLowerCase}[a-z0-9]*
 Unit          = {AlphaUpperCase}+
 
-Comment = \/\/
-CommentBlock = \/\*
-EndOfBlock = \*\/
+Comment = \/\/  //   // blabla
+CommentBlock = \/\*  // /* blabla
+EndOfBlock = \*\/    //   blabla */
 
 LineTerminator = \r|\n|\r\n
 AnythingButNotEOL = [^\n\r]
