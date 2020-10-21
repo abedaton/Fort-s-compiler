@@ -19,17 +19,41 @@
 
 %eofclose
 
+%init{
+
+%init}
+
+%{
+    public java.util.Map<String, Integer> variables = new java.util.LinkedHashMap<String, Integer>();
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
+      try {
+          System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
+          // We know this is a good unit
+          if (unit.equals("VARNAME")){
+              variables.putIfAbsent(yytext(), yyline+1);
+          }
+          yybegin(YYINITIAL);
+          return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn);
+      } catch (IllegalArgumentException e){
+          throw new IllegalArgumentException("This is not a good Unit: " + e + ": at line " + yyline);
+      }
+    }
+%}
+
+%eof{
+    System.out.println("\nVariables");
+    for (String var : variables.keySet()){
+        System.out.println(var + "\t" + variables.get(var));
+    }
+    System.out.println();
+%eof}
 
 %eofval{
 	return new Symbol(LexicalUnit.EOS, yyline, yycolumn);
 %eofval}
 
 
-%init{
-  System.out.println("Starting parssing... ");
-%init}
-
-%state YYINITIAL, PROGNAMESTATE, VARIABLE_STATE
+%state YYINITIAL, COMMENT_STATE, MULTICOMMENT_STATE
 
 AlphaUpperCase = [A-Z]
 AlphaLowerCase = [a-z]
@@ -38,39 +62,47 @@ ProgramName     = [A-Z][a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
 Variables      = {AlphaLowerCase}[a-z0-9]*
 Unit          = {AlphaUpperCase}+
 
-/* comments */
-LineTerminator = \r|\n|\r\n
-InputCharacter = [^\r\n]
-newline = [\n?\r?]
-// Comment can be the last line of the file, without line terminator.
-TraditionalComment   = "/*" [^*] ~"*/" | "/*" "*"+ "/"
-EndOfLineComment     = "//" {InputCharacter}* {LineTerminator}?
-DocumentationComment = "/**" {CommentContent} "*"+ "/"
-CommentContent       = ( [^*] | \*+ [^/*] )*
-Comment = {TraditionalComment} | {EndOfLineComment} | {DocumentationComment}
+Comment = \/\/
+CommentBlock = \/\*
+EndOfBlock = \*\/
 
-Sign           = [+-]
-Integer        = {Sign}?(([1-9][0-9]*)|0)
+LineTerminator = \r|\n|\r\n
+AnythingButNotEOL = [^\n\r]
+
+Integer        = (([1-9][0-9]*)|0)
 Decimal        = \.[0-9]*
 Real           = {Integer}{Decimal}?
+
+
 %%
 
 <YYINITIAL> {
-    {Comment}    {}
-    {Unit}       {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.valueOf(yytext())); yybegin(YYINITIAL); return new Symbol(LexicalUnit.valueOf(yytext()), yyline, yycolumn);}
-    {ProgramName} {System.out.println("token: " + yytext() + "\tlexical unit: " + LexicalUnit.PROGNAME); yybegin(YYINITIAL); return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn);}
-    {Variables}  {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.VARNAME); yybegin(YYINITIAL); return new Symbol(LexicalUnit.VARNAME, yyline, yycolumn);}
-    {Real}       {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.NUMBER); yybegin(YYINITIAL); return new Symbol(LexicalUnit.NUMBER, yyline, yycolumn);}
-    "("          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.LPAREN); yybegin(YYINITIAL); return new Symbol(LexicalUnit.LPAREN, yyline, yycolumn);}
-    ")"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.RPAREN); yybegin(YYINITIAL); return new Symbol(LexicalUnit.RPAREN, yyline, yycolumn);}
-    ":="         {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.ASSIGN); yybegin(YYINITIAL); return new Symbol(LexicalUnit.ASSIGN, yyline, yycolumn);}
-    ">"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.GT); yybegin(YYINITIAL); return new Symbol(LexicalUnit.GT, yyline, yycolumn);}
-    "="          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.EQ); yybegin(YYINITIAL); return new Symbol(LexicalUnit.EQ, yyline, yycolumn);}
-    "/"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.DIVIDE); yybegin(YYINITIAL); return new Symbol(LexicalUnit.DIVIDE, yyline, yycolumn);}
-    "*"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.TIMES); yybegin(YYINITIAL); return new Symbol(LexicalUnit.TIMES, yyline, yycolumn);}
-    "+"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.PLUS); yybegin(YYINITIAL); return new Symbol(LexicalUnit.PLUS, yyline, yycolumn);}
-    "-"          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.MINUS); yybegin(YYINITIAL); return new Symbol(LexicalUnit.MINUS, yyline, yycolumn);}
-    ","          {System.out.println("token: " + yytext() + "\t\tlexical unit: " + LexicalUnit.COMMA); yybegin(YYINITIAL); return new Symbol(LexicalUnit.COMMA, yyline, yycolumn);}
-    {LineTerminator} {System.out.println("token: " + "\\n" + "\t\tlexical unit: " + LexicalUnit.ENDLINE); yybegin(YYINITIAL); return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn);}
-    [^]          {}
+    {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
+    {Comment}         {yybegin(COMMENT_STATE);}
+    {CommentBlock}    {yybegin(MULTICOMMENT_STATE);}
+    {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn);}
+    {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn);}
+    {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn);}
+    {Real}            {ensureGoodUnit("NUMBER", yyline, yycolumn);}
+    "("               {ensureGoodUnit("LPAREN", yyline, yycolumn);}
+    ")"               {ensureGoodUnit("RPAREN", yyline, yycolumn);}
+    ":="              {ensureGoodUnit("ASSIGN", yyline, yycolumn);}
+    ">"               {ensureGoodUnit("GT", yyline, yycolumn);}
+    "="               {ensureGoodUnit("EQ", yyline, yycolumn);}
+    "/"               {ensureGoodUnit("DIVIDE", yyline, yycolumn);}
+    "*"               {ensureGoodUnit("TIMES", yyline, yycolumn);}
+    "+"               {ensureGoodUnit("PLUS", yyline, yycolumn);}
+    "-"               {ensureGoodUnit("MINUS", yyline, yycolumn);}
+    ","               {ensureGoodUnit("COMMA", yyline, yycolumn);}
+    [^]               {}
+}
+
+<COMMENT_STATE> {
+    {LineTerminator}        {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
+    {AnythingButNotEOL}     {}
+}
+
+<MULTICOMMENT_STATE> {
+    {EndOfBlock}           {yybegin(YYINITIAL);}
+    {LineTerminator}|.     {}
 }
