@@ -61,6 +61,9 @@ import java.util.HashMap;
 
 AlphaUpperCase = [A-Z]
 AlphaLowerCase = [a-z]
+Num = [0-9]
+AlphaNum = {AlphaLowerCase}|{AlphaUpperCase}|{Num}
+AlphaLowerNum = {AlphaLowerCase} | {Num} 
 
 ProgramName     = {AlphaUpperCase}[a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
 Variables      = {AlphaLowerCase}[a-z0-9]*
