@@ -61,6 +61,6 @@ token: ENDPROG	lexical unit: ENDPROG
 token: \n	lexical unit: ENDLINE
 
 Variables
-number	6
-result	7
+number	7
+result	8
 

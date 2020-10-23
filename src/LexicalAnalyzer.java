@@ -10,6 +10,7 @@
 import java.util.TreeMap;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 
 /**
@@ -61,10 +62,10 @@ class LexicalAnalyzer {
   private static final String ZZ_ACTION_PACKED_0 =
     "\3\0\1\1\1\2\1\3\1\4\1\5\1\6\2\7"+
     "\1\4\1\10\1\11\1\1\1\12\1\13\1\14\1\15"+
-    "\1\16\2\1\1\17\1\4\1\20\1\21\1\22\1\23";
+    "\1\16\4\17\1\20\1\4\1\21\1\22\1\23\1\24";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[28];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -90,12 +91,12 @@ class LexicalAnalyzer {
 
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\23\0\46\0\71\0\114\0\137\0\162\0\205"+
-    "\0\71\0\230\0\71\0\253\0\71\0\71\0\276\0\71"+
-    "\0\71\0\71\0\71\0\71\0\321\0\344\0\367\0\u010a"+
-    "\0\71\0\71\0\71\0\71";
+    "\0\230\0\253\0\71\0\276\0\71\0\71\0\321\0\71"+
+    "\0\71\0\71\0\71\0\71\0\71\0\344\0\230\0\367"+
+    "\0\u010a\0\u011d\0\71\0\71\0\71\0\71";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[28];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -120,15 +121,16 @@ class LexicalAnalyzer {
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13"+
     "\1\14\1\4\1\15\1\16\1\17\1\20\1\21\1\22"+
-    "\1\23\1\24\7\4\1\12\1\13\20\4\1\25\1\26"+
-    "\13\4\25\0\1\5\2\27\4\0\1\27\14\0\2\6"+
-    "\4\0\1\6\23\0\1\30\15\0\1\31\1\32\24\0"+
-    "\1\13\16\0\1\14\4\0\1\14\1\30\26\0\1\33"+
-    "\11\0\1\34\25\0\1\4\14\0\3\27\4\0\1\27"+
-    "\15\0\1\30\4\0\1\30\12\0";
+    "\1\23\1\24\7\4\1\12\1\13\13\4\4\25\1\26"+
+    "\1\27\1\30\13\25\1\4\24\0\1\5\2\31\4\0"+
+    "\1\31\14\0\2\6\4\0\1\6\23\0\1\32\15\0"+
+    "\1\33\1\34\21\0\1\35\25\0\1\13\16\0\1\14"+
+    "\4\0\1\14\1\32\26\0\1\36\12\0\1\34\24\0"+
+    "\1\25\14\0\3\31\4\0\1\31\15\0\1\32\4\0"+
+    "\1\32\12\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[285];
+    int [] result = new int[304];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -166,11 +168,11 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\3\0\1\11\4\1\1\11\1\1\1\11\1\1\2\11"+
-    "\1\1\5\11\4\1\4\11";
+    "\3\0\1\11\6\1\1\11\1\1\2\11\1\1\6\11"+
+    "\5\1\4\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[28];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -247,19 +249,45 @@ class LexicalAnalyzer {
 
   /* user code: */
     public Map<String, Integer> variables = new HashMap<String, Integer>();
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
+    public final LinkedList<Integer> states = new LinkedList<>();
+    public int openComments = 0;
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, boolean goBack){
       try {
           System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
           // We know this is a good unit
           if (unit.equals("VARNAME")){
               variables.putIfAbsent(yytext(), yyline+1);
           }
-          yybegin(YYINITIAL);
+          if (goBack){
+            yybegin(YYINITIAL);
+          }
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn);
       } catch (IllegalArgumentException e){
           throw new IllegalArgumentException("This is not a good Unit: " + e + ": at line " + yyline);
       }
     }
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
+        return ensureGoodUnit(unit, yyline, yycolumn, true);
+    }
+
+    private void newComment(){
+        if (openComments == 0){
+            openComments++;
+            yybegin(MULTICOMMENT_STATE);
+        }
+    }
+
+    private void endComment(){
+        if (openComments > 0){
+            openComments--;
+            if (openComments == 0){
+                yybegin(YYINITIAL);
+            }
+        } else {
+            System.out.println("Erreur: Commentaire fermant mais pas assez d'ouvert");
+        }
+    }
+
 
 
   /**
@@ -656,79 +684,84 @@ class LexicalAnalyzer {
           case 1: 
             { 
             }
-          case 20: break;
+          case 21: break;
           case 2: 
             { ensureGoodUnit(yytext(), yyline, yycolumn);
             }
-          case 21: break;
+          case 22: break;
           case 3: 
             { ensureGoodUnit("VARNAME", yyline, yycolumn);
             }
-          case 22: break;
+          case 23: break;
           case 4: 
             { ensureGoodUnit("NUMBER", yyline, yycolumn);
             }
-          case 23: break;
+          case 24: break;
           case 5: 
             { ensureGoodUnit("DIVIDE", yyline, yycolumn);
             }
-          case 24: break;
+          case 25: break;
           case 6: 
             { ensureGoodUnit("TIMES", yyline, yycolumn);
             }
-          case 25: break;
+          case 26: break;
           case 7: 
             { ensureGoodUnit("ENDLINE", yyline, yycolumn);
             }
-          case 26: break;
+          case 27: break;
           case 8: 
             { ensureGoodUnit("LPAREN", yyline, yycolumn);
             }
-          case 27: break;
+          case 28: break;
           case 9: 
             { ensureGoodUnit("RPAREN", yyline, yycolumn);
             }
-          case 28: break;
+          case 29: break;
           case 10: 
             { ensureGoodUnit("EQ", yyline, yycolumn);
             }
-          case 29: break;
+          case 30: break;
           case 11: 
             { ensureGoodUnit("GT", yyline, yycolumn);
             }
-          case 30: break;
+          case 31: break;
           case 12: 
             { ensureGoodUnit("PLUS", yyline, yycolumn);
             }
-          case 31: break;
+          case 32: break;
           case 13: 
             { ensureGoodUnit("MINUS", yyline, yycolumn);
             }
-          case 32: break;
+          case 33: break;
           case 14: 
             { ensureGoodUnit("COMMA", yyline, yycolumn);
             }
-          case 33: break;
-          case 15: 
-            { ensureGoodUnit("PROGNAME", yyline, yycolumn);
-            }
           case 34: break;
-          case 16: 
-            { yybegin(COMMENT_STATE);
+          case 15: 
+            { System.out.println("token: \\n" + yytext() + "\tlexical unit: " + LexicalUnit.ENDLINE);
+                            return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn);
             }
           case 35: break;
-          case 17: 
-            { yybegin(MULTICOMMENT_STATE);
+          case 16: 
+            { ensureGoodUnit("PROGNAME", yyline, yycolumn);
             }
           case 36: break;
-          case 18: 
-            { ensureGoodUnit("ASSIGN", yyline, yycolumn);
+          case 17: 
+            { yybegin(COMMENT_STATE);
             }
           case 37: break;
-          case 19: 
-            { yybegin(YYINITIAL);
+          case 18: 
+            { newComment();
             }
           case 38: break;
+          case 19: 
+            { endComment();
+            }
+          case 39: break;
+          case 20: 
+            { ensureGoodUnit("ASSIGN", yyline, yycolumn);
+            }
+          case 40: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

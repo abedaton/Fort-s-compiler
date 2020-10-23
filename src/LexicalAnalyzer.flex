@@ -8,6 +8,7 @@
 import java.util.TreeMap;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 %%
 
@@ -28,19 +29,45 @@ import java.util.HashMap;
 
 %{
     public Map<String, Integer> variables = new HashMap<String, Integer>();
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
+    public final LinkedList<Integer> states = new LinkedList<>();
+    public int openComments = 0;
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, boolean goBack){
       try {
           System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
           // We know this is a good unit
           if (unit.equals("VARNAME")){
               variables.putIfAbsent(yytext(), yyline+1);
           }
-          yybegin(YYINITIAL);
+          if (goBack){
+            yybegin(YYINITIAL);
+          }
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn);
       } catch (IllegalArgumentException e){
           throw new IllegalArgumentException("This is not a good Unit: " + e + ": at line " + yyline);
       }
     }
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
+        return ensureGoodUnit(unit, yyline, yycolumn, true);
+    }
+
+    private void newComment(){
+        if (openComments == 0){
+            openComments++;
+            yybegin(MULTICOMMENT_STATE);
+        }
+    }
+
+    private void endComment(){
+        if (openComments > 0){
+            openComments--;
+            if (openComments == 0){
+                yybegin(YYINITIAL);
+            }
+        } else {
+            System.out.println("Erreur: Commentaire fermant mais pas assez d'ouvert");
+        }
+    }
+
 %}
 
 %eof{
@@ -63,7 +90,7 @@ AlphaUpperCase = [A-Z]
 AlphaLowerCase = [a-z]
 Num = [0-9]
 AlphaNum = {AlphaLowerCase}|{AlphaUpperCase}|{Num}
-AlphaLowerNum = {AlphaLowerCase} | {Num} 
+AlphaLowerNum = {AlphaLowerCase} | {Num}
 
 ProgramName     = {AlphaUpperCase}[a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
 Variables      = {AlphaLowerCase}[a-z0-9]*
@@ -86,7 +113,8 @@ Real           = {Integer}{Decimal}?
 <YYINITIAL> {
     {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
     {Comment}         {yybegin(COMMENT_STATE);}
-    {CommentBlock}    {yybegin(MULTICOMMENT_STATE);}
+    {CommentBlock}    {newComment();}
+    {EndOfBlock}      {endComment();}
     {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn);}
     {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn);}
     {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn);}
@@ -110,6 +138,10 @@ Real           = {Integer}{Decimal}?
 }
 
 <MULTICOMMENT_STATE> {
-    {EndOfBlock}           {yybegin(YYINITIAL);}
-    {LineTerminator}|.     {}
+    {CommentBlock}         {newComment();}
+    {EndOfBlock}           {endComment();}
+    //{LineTerminator}|.     {ensureGoodUnit("ENDLINE", yyline, yycolumn, false);}
+    {LineTerminator}|.     {System.out.println("token: \\n" + yytext() + "\tlexical unit: " + LexicalUnit.ENDLINE);
+                            return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn);}
+    [^]                    {}
 }

@@ -1,6 +1,7 @@
 BEGINPROG Factorial
 
 /* Compute the factorial of a number /*   blabla
+   ah oui oui
    If the input // number is negative, print -1. */
 
   READ(number)              // Read a number from user input
