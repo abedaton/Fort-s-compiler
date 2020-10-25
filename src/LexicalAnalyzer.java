@@ -62,11 +62,11 @@ class LexicalAnalyzer {
   private static final String ZZ_ACTION_PACKED_0 =
     "\3\0\1\1\1\2\1\3\1\4\1\5\1\6\2\7"+
     "\1\4\1\10\1\11\1\1\1\12\1\13\1\14\1\15"+
-    "\1\16\2\1\2\17\1\20\1\4\1\21\1\22\1\23"+
-    "\1\24\1\25";
+    "\1\16\3\1\1\17\1\4\1\20\1\21\1\22\1\23"+
+    "\1\24";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[31];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -93,11 +93,11 @@ class LexicalAnalyzer {
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\22\0\44\0\66\0\110\0\132\0\154\0\176"+
     "\0\66\0\220\0\66\0\242\0\66\0\66\0\264\0\66"+
-    "\0\66\0\66\0\66\0\66\0\306\0\330\0\352\0\66"+
-    "\0\374\0\u010e\0\66\0\66\0\66\0\66\0\66";
+    "\0\66\0\66\0\66\0\66\0\306\0\330\0\352\0\374"+
+    "\0\u010e\0\66\0\66\0\66\0\66\0\66";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[31];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -123,12 +123,11 @@ class LexicalAnalyzer {
     "\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13"+
     "\1\14\1\4\1\15\1\16\1\17\1\20\1\21\1\22"+
     "\1\23\1\24\6\4\1\12\1\13\16\4\1\25\1\26"+
-    "\1\27\1\30\12\4\23\0\1\5\2\31\4\0\1\31"+
-    "\13\0\2\6\4\0\1\6\22\0\1\32\14\0\1\33"+
-    "\1\34\23\0\1\13\15\0\1\14\4\0\1\14\1\32"+
-    "\25\0\1\35\11\0\1\36\20\0\1\37\24\0\1\30"+
-    "\13\0\3\31\4\0\1\31\14\0\1\32\4\0\1\32"+
-    "\11\0";
+    "\1\27\13\4\23\0\1\5\2\30\4\0\1\30\13\0"+
+    "\2\6\4\0\1\6\22\0\1\31\14\0\1\32\1\33"+
+    "\23\0\1\13\15\0\1\14\4\0\1\14\1\31\25\0"+
+    "\1\34\11\0\1\35\20\0\1\36\24\0\1\4\13\0"+
+    "\3\30\4\0\1\30\14\0\1\31\4\0\1\31\11\0";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[288];
@@ -170,10 +169,10 @@ class LexicalAnalyzer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\3\0\1\11\4\1\1\11\1\1\1\11\1\1\2\11"+
-    "\1\1\5\11\3\1\1\11\2\1\5\11";
+    "\1\1\5\11\5\1\5\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[31];
+    int [] result = new int[30];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -666,95 +665,91 @@ class LexicalAnalyzer {
           case 1: 
             { 
             }
-          case 22: break;
+          case 21: break;
           case 2: 
             { ensureGoodUnit(yytext(), yyline, yycolumn);
             }
-          case 23: break;
+          case 22: break;
           case 3: 
             { ensureGoodUnit("VARNAME", yyline, yycolumn);
             }
-          case 24: break;
+          case 23: break;
           case 4: 
             { ensureGoodUnit("NUMBER", yyline, yycolumn);
             }
-          case 25: break;
+          case 24: break;
           case 5: 
             { ensureGoodUnit("DIVIDE", yyline, yycolumn);
             }
-          case 26: break;
+          case 25: break;
           case 6: 
             { ensureGoodUnit("TIMES", yyline, yycolumn);
             }
-          case 27: break;
+          case 26: break;
           case 7: 
             { ensureGoodUnit("ENDLINE", yyline, yycolumn);
             }
-          case 28: break;
+          case 27: break;
           case 8: 
             { ensureGoodUnit("LPAREN", yyline, yycolumn);
             }
-          case 29: break;
+          case 28: break;
           case 9: 
             { ensureGoodUnit("RPAREN", yyline, yycolumn);
             }
-          case 30: break;
+          case 29: break;
           case 10: 
             { ensureGoodUnit("EQ", yyline, yycolumn);
             }
-          case 31: break;
+          case 30: break;
           case 11: 
             { ensureGoodUnit("GT", yyline, yycolumn);
             }
-          case 32: break;
+          case 31: break;
           case 12: 
             { ensureGoodUnit("PLUS", yyline, yycolumn);
             }
-          case 33: break;
+          case 32: break;
           case 13: 
             { ensureGoodUnit("MINUS", yyline, yycolumn);
             }
-          case 34: break;
+          case 33: break;
           case 14: 
             { ensureGoodUnit("COMMA", yyline, yycolumn);
             }
-          case 35: break;
+          case 34: break;
           case 15: 
-            { ensureGoodUnit("ENDLINE", yyline, yycolumn, false);
-            }
-          case 36: break;
-          case 16: 
             { ensureGoodUnit("PROGNAME", yyline, yycolumn);
             }
-          case 37: break;
-          case 17: 
+          case 35: break;
+          case 16: 
             { yybegin(COMMENT_STATE);
             }
-          case 38: break;
-          case 18: 
+          case 36: break;
+          case 17: 
             { yybegin(MULTICOMMENT_STATE);
             }
-          case 39: break;
-          case 19: 
+          case 37: break;
+          case 18: 
             { ensureGoodUnit("ASSIGN", yyline, yycolumn);
             }
-          case 40: break;
-          case 20: 
+          case 38: break;
+          case 19: 
             { if (openComments){
                               throw new IllegalArgumentException("You cannot imbricate comments FDP (we need to modify this)");
                             } else {
                               openComments = true;
                             }
             }
-          case 41: break;
-          case 21: 
+          case 39: break;
+          case 20: 
             { if (!openComments){
                               throw new IllegalArgumentException("You have a closing comment and no opening comment !");
                             } else {
                               openComments = false;
                               yybegin(YYINITIAL);}
             }
-          case 42: break;
+          case 40: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

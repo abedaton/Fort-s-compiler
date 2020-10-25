@@ -118,7 +118,7 @@ Real           = {Integer}{Decimal}?
 }
 
 <MULTICOMMENT_STATE> {
-    {LineTerminator}     {ensureGoodUnit("ENDLINE", yyline, yycolumn, false);}
+    {LineTerminator}     {}
     {CommentBlock}         {if (openComments){
                               throw new IllegalArgumentException("You cannot imbricate comments FDP (we need to modify this)");
                             } else {
