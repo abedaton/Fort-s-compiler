@@ -9,6 +9,7 @@ import java.util.TreeMap;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 %%
 
@@ -42,8 +43,10 @@ import java.util.LinkedList;
           }
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn);
       } catch (IllegalArgumentException e){
-          throw new IllegalArgumentException("This is not a good Unit: " + e + ": at line " + yyline);
+          System.out.println("Error in this line: " + "\nThis is not a good Unit: " + unit);
+          System.exit(1);
       }
+      return null;
     }
     private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
         return ensureGoodUnit(unit, yyline, yycolumn, true);
@@ -87,17 +90,19 @@ AnythingButNotEOL = [^\n\r]
 Integer        = (([1-9][0-9]*)|0)
 Decimal        = \.[0-9]*
 Real           = {Integer}{Decimal}?
-
+BadNumber      = 0{Real}
 
 %%
 
 <YYINITIAL> {
     {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
-    {CommentBlock}    {yybegin(MULTICOMMENT_STATE);}
+    {CommentBlock}    {openComments = true; yybegin(MULTICOMMENT_STATE);}
+    {EndOfBlock}      {throw new IllegalArgumentException("*/ without /*");}
     {Comment}         {yybegin(COMMENT_STATE);}
     {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn);}
     {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn);}
     {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn);}
+    {BadNumber}       {throw new IllegalArgumentException("Error: Bad number:" + yytext());}
     {Real}            {ensureGoodUnit("NUMBER", yyline, yycolumn);}
     "("               {ensureGoodUnit("LPAREN", yyline, yycolumn);}
     ")"               {ensureGoodUnit("RPAREN", yyline, yycolumn);}
@@ -109,7 +114,7 @@ Real           = {Integer}{Decimal}?
     "+"               {ensureGoodUnit("PLUS", yyline, yycolumn);}
     "-"               {ensureGoodUnit("MINUS", yyline, yycolumn);}
     ","               {ensureGoodUnit("COMMA", yyline, yycolumn);}
-    [^]               {}
+    [^]               {if (!yytext().equals(" ")) throw new IllegalArgumentException("Couldn't recognize that symbol: " + yytext());}
 }
 
 <COMMENT_STATE> {
