@@ -2,7 +2,7 @@
  * Projet Compilation                                                      *
  * Defraene Pierre, Bedaton Antoine                                        *
  *                                                                         *
- *                                                                         *                                                                          *
+ *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 import java.util.TreeMap;
@@ -29,8 +29,7 @@ import java.util.LinkedList;
 
 %{
     public Map<String, Integer> variables = new HashMap<String, Integer>();
-    public final LinkedList<Integer> states = new LinkedList<>();
-    public int openComments = 0;
+    public boolean openComments = true;
     private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, boolean goBack){
       try {
           System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
@@ -48,24 +47,6 @@ import java.util.LinkedList;
     }
     private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
         return ensureGoodUnit(unit, yyline, yycolumn, true);
-    }
-
-    private void newComment(){
-        if (openComments == 0){
-            openComments++;
-            yybegin(MULTICOMMENT_STATE);
-        }
-    }
-
-    private void endComment(){
-        if (openComments > 0){
-            openComments--;
-            if (openComments == 0){
-                yybegin(YYINITIAL);
-            }
-        } else {
-            System.out.println("Erreur: Commentaire fermant mais pas assez d'ouvert");
-        }
     }
 
 %}
@@ -112,9 +93,8 @@ Real           = {Integer}{Decimal}?
 
 <YYINITIAL> {
     {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
+    {CommentBlock}    {yybegin(MULTICOMMENT_STATE);}
     {Comment}         {yybegin(COMMENT_STATE);}
-    {CommentBlock}    {newComment();}
-    {EndOfBlock}      {endComment();}
     {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn);}
     {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn);}
     {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn);}
@@ -138,10 +118,18 @@ Real           = {Integer}{Decimal}?
 }
 
 <MULTICOMMENT_STATE> {
-    {CommentBlock}         {newComment();}
-    {EndOfBlock}           {endComment();}
-    //{LineTerminator}|.     {ensureGoodUnit("ENDLINE", yyline, yycolumn, false);}
-    {LineTerminator}|.     {System.out.println("token: \\n" + yytext() + "\tlexical unit: " + LexicalUnit.ENDLINE);
-                            return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn);}
+    {LineTerminator}     {ensureGoodUnit("ENDLINE", yyline, yycolumn, false);}
+    {CommentBlock}         {if (openComments){
+                              throw new IllegalArgumentException("You cannot imbricate comments FDP (we need to modify this)");
+                            } else {
+                              openComments = true;
+                            }
+                          }
+    {EndOfBlock}          {if (!openComments){
+                              throw new IllegalArgumentException("You have a closing comment and no opening comment !");
+                            } else {
+                              openComments = false;
+                              yybegin(YYINITIAL);}
+                            }
     [^]                    {}
 }
