@@ -5,11 +5,7 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-import java.util.TreeMap;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.ArrayList;
+
 
 %%
 
@@ -29,39 +25,25 @@ import java.util.ArrayList;
 %init}
 
 %{
-    public Map<String, Integer> variables = new HashMap<String, Integer>();
     public boolean openComments = true;
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, boolean goBack){
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn,String yytext ,  boolean goBack){
       try {
-          System.out.println("token: " + ((unit == "ENDLINE") ? "\\n" : yytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
-          // We know this is a good unit
-          if (unit.equals("VARNAME")){
-              variables.putIfAbsent(yytext(), yyline+1);
-          }
           if (goBack){
             yybegin(YYINITIAL);
           }
-          return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn);
+          System.out.println((LexicalUnit.valueOf(unit)));
+          return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn,yytext);
       } catch (IllegalArgumentException e){
           System.out.println("Error in this line: " + "\nThis is not a good Unit: " + unit);
           System.exit(1);
+          return null;
       }
-      return null;
     }
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn){
-        return ensureGoodUnit(unit, yyline, yycolumn, true);
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, String yytext){
+        return ensureGoodUnit(unit, yyline, yycolumn, yytext, true);
     }
 
 %}
-
-%eof{
-    System.out.println("\nVariables");
-    TreeMap<String, Integer> sortedVariables = new TreeMap<String, Integer>(variables);
-    for (Map.Entry<String,Integer> oneVar : sortedVariables.entrySet()){
-        System.out.println(oneVar.getKey() + "\t" + oneVar.getValue());
-    }
-    System.out.println();
-%eof}
 
 %eofval{
 	return new Symbol(LexicalUnit.EOS, yyline, yycolumn);
@@ -95,30 +77,30 @@ BadNumber      = 0{Real}
 %%
 
 <YYINITIAL> {
-    {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
+    {LineTerminator}  {ensureGoodUnit("ENDLINE", yyline, yycolumn , yytext());}
     {CommentBlock}    {openComments = true; yybegin(MULTICOMMENT_STATE);}
     {EndOfBlock}      {throw new IllegalArgumentException("*/ without /*");}
     {Comment}         {yybegin(COMMENT_STATE);}
-    {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn);}
-    {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn);}
-    {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn);}
+    {Unit}            {ensureGoodUnit(yytext(), yyline, yycolumn, yytext());}
+    {ProgramName}     {ensureGoodUnit("PROGNAME", yyline, yycolumn, yytext());}
+    {Variables}       {ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());}
     {BadNumber}       {throw new IllegalArgumentException("Error: Bad number:" + yytext());}
-    {Real}            {ensureGoodUnit("NUMBER", yyline, yycolumn);}
-    "("               {ensureGoodUnit("LPAREN", yyline, yycolumn);}
-    ")"               {ensureGoodUnit("RPAREN", yyline, yycolumn);}
-    ":="              {ensureGoodUnit("ASSIGN", yyline, yycolumn);}
-    ">"               {ensureGoodUnit("GT", yyline, yycolumn);}
-    "="               {ensureGoodUnit("EQ", yyline, yycolumn);}
-    "/"               {ensureGoodUnit("DIVIDE", yyline, yycolumn);}
-    "*"               {ensureGoodUnit("TIMES", yyline, yycolumn);}
-    "+"               {ensureGoodUnit("PLUS", yyline, yycolumn);}
-    "-"               {ensureGoodUnit("MINUS", yyline, yycolumn);}
-    ","               {ensureGoodUnit("COMMA", yyline, yycolumn);}
+    {Real}            {ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());}
+    "("               {ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());}
+    ")"               {ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());}
+    ":="              {ensureGoodUnit("ASSIGN", yyline, yycolumn, yytext());}
+    ">"               {ensureGoodUnit("GT", yyline, yycolumn, yytext());}
+    "="               {ensureGoodUnit("EQ", yyline, yycolumn, yytext());}
+    "/"               {ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());}
+    "*"               {ensureGoodUnit("TIMES", yyline, yycolumn, yytext());}
+    "+"               {ensureGoodUnit("PLUS", yyline, yycolumn, yytext());}
+    "-"               {ensureGoodUnit("MINUS", yyline, yycolumn, yytext());}
+    ","               {ensureGoodUnit("COMMA", yyline, yycolumn, yytext());}
     [^]               {if (!yytext().equals(" ")) throw new IllegalArgumentException("Couldn't recognize that symbol: " + yytext());}
 }
 
 <COMMENT_STATE> {
-    {LineTerminator}        {ensureGoodUnit("ENDLINE", yyline, yycolumn);}
+    {LineTerminator}        {ensureGoodUnit("ENDLINE", yyline, yycolumn, yytext());}
     {AnythingButNotEOL}     {}
 }
 
