@@ -89,6 +89,7 @@ BadNumber      = 0{Real}
     "+"               {return ensureGoodUnit("PLUS", yyline, yycolumn, yytext());}
     "-"               {return ensureGoodUnit("MINUS", yyline, yycolumn, yytext());}
     ","               {return ensureGoodUnit("COMMA", yyline, yycolumn, yytext());}
+    "\t"              {}
     [^]               {if (!yytext().equals(" ")) throw new IllegalArgumentException("Couldn't recognize that symbol: " + yytext());}
 }
 

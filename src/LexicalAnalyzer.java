@@ -71,9 +71,10 @@ class LexicalAnalyzer {
   private static final int [] ZZ_CMAP_BLOCKS = zzUnpackcmap_blocks();
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
-    "\12\0\1\1\2\0\1\2\32\0\1\3\1\4\1\5"+
-    "\1\6\1\7\1\10\1\11\1\12\1\13\11\14\1\15"+
-    "\2\0\1\16\1\17\2\0\32\20\6\0\32\21\u0185\0";
+    "\11\0\1\1\1\2\2\0\1\3\32\0\1\4\1\5"+
+    "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\11\15"+
+    "\1\16\2\0\1\17\1\20\2\0\32\21\6\0\32\22"+
+    "\u0185\0";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[512];
@@ -100,9 +101,9 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\3\0\1\1\2\2\1\3\1\4\1\5\1\6\1\7"+
-    "\1\10\1\11\2\12\1\1\1\13\1\14\1\15\1\16"+
-    "\1\17\2\20\3\17\1\21\1\22\1\23\1\12\2\24"+
+    "\3\0\1\1\1\2\2\3\1\4\1\5\1\6\1\7"+
+    "\1\10\1\11\1\12\2\13\1\1\1\14\1\15\1\16"+
+    "\1\17\2\20\3\2\1\21\1\22\1\23\1\13\2\24"+
     "\1\25\1\26\1\27\1\30\1\24";
 
   private static int [] zzUnpackAction() {
@@ -131,11 +132,11 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\22\0\44\0\66\0\66\0\110\0\66\0\66"+
-    "\0\132\0\66\0\66\0\66\0\154\0\176\0\220\0\242"+
-    "\0\66\0\66\0\264\0\306\0\66\0\66\0\330\0\352"+
-    "\0\374\0\u010e\0\66\0\66\0\66\0\u0120\0\u0132\0\u0144"+
-    "\0\66\0\u0156\0\66\0\66\0\u0168";
+    "\0\0\0\23\0\46\0\71\0\71\0\71\0\114\0\71"+
+    "\0\71\0\137\0\71\0\71\0\71\0\162\0\205\0\230"+
+    "\0\253\0\71\0\71\0\276\0\321\0\71\0\344\0\367"+
+    "\0\u010a\0\u011d\0\71\0\71\0\71\0\u0130\0\u0143\0\u0156"+
+    "\0\71\0\u0169\0\71\0\71\0\u017c";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[37];
@@ -162,18 +163,18 @@ class LexicalAnalyzer {
 
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13"+
-    "\1\14\1\4\1\15\1\16\1\17\1\20\1\21\1\22"+
-    "\1\23\1\24\1\25\1\26\1\27\21\25\1\30\2\25"+
-    "\1\31\4\25\1\32\7\25\23\0\1\5\32\0\1\33"+
-    "\14\0\1\34\4\0\1\35\20\0\1\36\1\0\1\37"+
-    "\1\40\16\0\1\36\1\0\2\17\23\0\1\41\16\0"+
-    "\2\42\3\0\1\23\1\42\13\0\2\24\4\0\1\24"+
-    "\1\0\1\26\21\0\1\25\32\0\1\43\14\0\1\44"+
-    "\27\0\2\36\16\0\1\45\21\0\1\45\1\0\2\40"+
-    "\20\0\2\42\3\0\2\42\13\0\2\45\5\0";
+    "\1\14\1\15\1\4\1\16\1\17\1\20\1\21\1\22"+
+    "\1\23\1\24\1\25\2\5\1\26\1\27\22\5\1\30"+
+    "\2\5\1\31\4\5\1\32\7\5\25\0\1\6\33\0"+
+    "\1\33\15\0\1\34\4\0\1\35\21\0\1\36\1\0"+
+    "\1\37\1\40\17\0\1\36\1\0\2\20\24\0\1\41"+
+    "\17\0\2\42\3\0\1\24\1\42\14\0\2\25\4\0"+
+    "\1\25\2\0\1\26\22\0\1\5\33\0\1\43\15\0"+
+    "\1\44\30\0\2\36\17\0\1\45\22\0\1\45\1\0"+
+    "\2\40\21\0\2\42\3\0\2\42\14\0\2\45\5\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[378];
+    int [] result = new int[399];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -216,8 +217,8 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\3\0\2\11\1\1\2\11\1\1\3\11\4\1\2\11"+
-    "\2\1\2\11\4\1\3\11\3\1\1\11\1\1\2\11"+
+    "\3\0\3\11\1\1\2\11\1\1\3\11\4\1\2\11"+
+    "\2\1\1\11\4\1\3\11\3\1\1\11\1\1\2\11"+
     "\1\1";
 
   private static int [] zzUnpackAttribute() {
@@ -724,72 +725,72 @@ class LexicalAnalyzer {
             // fall through
           case 25: break;
           case 2:
-            { return ensureGoodUnit("ENDLINE", yyline, yycolumn , "\\n");
+            { 
             }
             // fall through
           case 26: break;
           case 3:
-            { return ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("ENDLINE", yyline, yycolumn , "\\n");
             }
             // fall through
           case 27: break;
           case 4:
-            { return ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());
             }
             // fall through
           case 28: break;
           case 5:
-            { return ensureGoodUnit("TIMES", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());
             }
             // fall through
           case 29: break;
           case 6:
-            { return ensureGoodUnit("PLUS", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("TIMES", yyline, yycolumn, yytext());
             }
             // fall through
           case 30: break;
           case 7:
-            { return ensureGoodUnit("COMMA", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("PLUS", yyline, yycolumn, yytext());
             }
             // fall through
           case 31: break;
           case 8:
-            { return ensureGoodUnit("MINUS", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("COMMA", yyline, yycolumn, yytext());
             }
             // fall through
           case 32: break;
           case 9:
-            { return ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("MINUS", yyline, yycolumn, yytext());
             }
             // fall through
           case 33: break;
           case 10:
-            { return ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());
             }
             // fall through
           case 34: break;
           case 11:
-            { return ensureGoodUnit("EQ", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());
             }
             // fall through
           case 35: break;
           case 12:
-            { return ensureGoodUnit("GT", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("EQ", yyline, yycolumn, yytext());
             }
             // fall through
           case 36: break;
           case 13:
-            { return ensureGoodUnit(yytext(), yyline, yycolumn, yytext());
+            { return ensureGoodUnit("GT", yyline, yycolumn, yytext());
             }
             // fall through
           case 37: break;
           case 14:
-            { return ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());
+            { return ensureGoodUnit(yytext(), yyline, yycolumn, yytext());
             }
             // fall through
           case 38: break;
           case 15:
-            { 
+            { return ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());
             }
             // fall through
           case 39: break;
