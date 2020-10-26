@@ -301,7 +301,6 @@ class LexicalAnalyzer {
     public boolean openComments = true;
     private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn,String yytext){
       try {
-          System.out.println((LexicalUnit.valueOf(unit)));
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn,yytext);
       } catch (IllegalArgumentException e){
           System.out.println("Error in this line: " + "\nThis is not a good Unit: " + unit);
@@ -725,67 +724,67 @@ class LexicalAnalyzer {
             // fall through
           case 25: break;
           case 2:
-            { ensureGoodUnit("ENDLINE", yyline, yycolumn , yytext());
+            { return ensureGoodUnit("ENDLINE", yyline, yycolumn , "\\n");
             }
             // fall through
           case 26: break;
           case 3:
-            { ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());
             }
             // fall through
           case 27: break;
           case 4:
-            { ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());
             }
             // fall through
           case 28: break;
           case 5:
-            { ensureGoodUnit("TIMES", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("TIMES", yyline, yycolumn, yytext());
             }
             // fall through
           case 29: break;
           case 6:
-            { ensureGoodUnit("PLUS", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("PLUS", yyline, yycolumn, yytext());
             }
             // fall through
           case 30: break;
           case 7:
-            { ensureGoodUnit("COMMA", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("COMMA", yyline, yycolumn, yytext());
             }
             // fall through
           case 31: break;
           case 8:
-            { ensureGoodUnit("MINUS", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("MINUS", yyline, yycolumn, yytext());
             }
             // fall through
           case 32: break;
           case 9:
-            { ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());
             }
             // fall through
           case 33: break;
           case 10:
-            { ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());
             }
             // fall through
           case 34: break;
           case 11:
-            { ensureGoodUnit("EQ", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("EQ", yyline, yycolumn, yytext());
             }
             // fall through
           case 35: break;
           case 12:
-            { ensureGoodUnit("GT", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("GT", yyline, yycolumn, yytext());
             }
             // fall through
           case 36: break;
           case 13:
-            { ensureGoodUnit(yytext(), yyline, yycolumn, yytext());
+            { return ensureGoodUnit(yytext(), yyline, yycolumn, yytext());
             }
             // fall through
           case 37: break;
           case 14:
-            { ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());
             }
             // fall through
           case 38: break;
@@ -795,7 +794,7 @@ class LexicalAnalyzer {
             // fall through
           case 39: break;
           case 16:
-            { ensureGoodUnit("ENDLINE", yyline, yycolumn, yytext()); yybegin(YYINITIAL);
+            { yybegin(YYINITIAL); return ensureGoodUnit("ENDLINE", yyline, yycolumn, "\\n");
             }
             // fall through
           case 40: break;
@@ -820,12 +819,12 @@ class LexicalAnalyzer {
             // fall through
           case 44: break;
           case 21:
-            { ensureGoodUnit("ASSIGN", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("ASSIGN", yyline, yycolumn, yytext());
             }
             // fall through
           case 45: break;
           case 22:
-            { ensureGoodUnit("PROGNAME", yyline, yycolumn, yytext());
+            { return ensureGoodUnit("PROGNAME", yyline, yycolumn, yytext());
             }
             // fall through
           case 46: break;

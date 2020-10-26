@@ -28,12 +28,12 @@ public class Main {
         while (true) {
             try {
                 readingSymbol = analyzer.nextToken();
-                symbolList.add(readingSymbol);
                 if (readingSymbol.getType() == LexicalUnit.EOS) {
                     break;
                 }
+                symbolList.add(readingSymbol);
                 // We know this is a good unit
-                if (readingSymbol.getType().equals("VARNAME")){
+                if (readingSymbol.getType() == LexicalUnit.VARNAME){
                     variables.putIfAbsent(readingSymbol.getValue(), readingSymbol.getLine());
                 }
             } catch (IOException e) {
