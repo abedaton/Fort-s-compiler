@@ -26,11 +26,8 @@
 
 %{
     public boolean openComments = true;
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn,String yytext ,  boolean goBack){
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn,String yytext){
       try {
-          if (goBack){
-            yybegin(YYINITIAL);
-          }
           System.out.println((LexicalUnit.valueOf(unit)));
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn,yytext);
       } catch (IllegalArgumentException e){
@@ -38,9 +35,6 @@
           System.exit(1);
           return null;
       }
-    }
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, String yytext){
-        return ensureGoodUnit(unit, yyline, yycolumn, yytext, true);
     }
 
 %}
@@ -100,7 +94,7 @@ BadNumber      = 0{Real}
 }
 
 <COMMENT_STATE> {
-    {LineTerminator}        {ensureGoodUnit("ENDLINE", yyline, yycolumn, yytext());}
+    {LineTerminator}        {ensureGoodUnit("ENDLINE", yyline, yycolumn, yytext()); yybegin(YYINITIAL);}
     {AnythingButNotEOL}     {}
 }
 
