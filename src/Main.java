@@ -7,11 +7,13 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 
 public class Main {
+    /*
+    * Main which read a file in FORTR-S and print the Lexical Unit and the symbol table
+    */
     public static void main(String[] args) {
+
       Map<Object, Integer> variables = new HashMap<Object, Integer>();
       ArrayList<Symbol> symbolList = new ArrayList<Symbol>();
-
-        //take return from the flex files
 
         java.io.FileInputStream stream = null;
         try {
@@ -44,14 +46,24 @@ public class Main {
         printLexicalUnit(symbolList);
         printVariable(variables);
     }
+    /**
+    * Print all the lexical unit
+    * @param LexicalUnit all the lexical unit find by the Jflex
+    */
     public static void printLexicalUnit(ArrayList<Symbol> LexicalUnit){
+
       for(Symbol i : LexicalUnit){
         //System.out.println("token: " + ((i.getType() == "ENDLINE") ? "\\n" : i.getyytext()) + "\tlexical unit: " + LexicalUnit.valueOf(unit));
         System.out.println(i);
       }
     }
 
+    /**
+    * Print the symbol table in alphabetical order
+    * @param variables all variables with the line of the first occurrence
+    */
     public static void printVariable(Map<Object,Integer> variables){
+
       System.out.println("\nVariables");
       TreeMap<Object, Integer> sortedVariables = new TreeMap<Object, Integer>(variables);
       for (Map.Entry<Object,Integer> oneVar : sortedVariables.entrySet()){
