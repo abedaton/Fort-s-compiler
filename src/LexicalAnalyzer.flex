@@ -61,19 +61,19 @@ Num = [0-9]
 AlphaNum = {AlphaLowerCase}|{AlphaUpperCase}|{Num}
 AlphaLowerNum = {AlphaLowerCase} | {Num}
 
-ProgramName     = {AlphaUpperCase}[a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
-Variables      = {AlphaLowerCase}[a-z0-9]*
+ProgramName     = {AlphaUpperCase}{AlphaNum}*{AlphaLowerNum}{AlphaNum}*
+Variables      = {AlphaLowerCase}{AlphaLowerNum}*
 Unit          = {AlphaUpperCase}+
 
-Comment = \/\/  
+Comment = \/\/
 CommentBlock = \/\*
 EndOfBlock = \*\/
 
 LineTerminator = \r|\n|\r\n
 AnythingButNotEOL = [^\n\r]
 
-Integer        = (([1-9][0-9]*)|0)
-Decimal        = \.[0-9]*
+Integer        = (([1-9]{Num}*)|0)
+Decimal        = \.{Num}*
 Real           = {Integer}{Decimal}?
 BadNumber      = 0{Real}
 
