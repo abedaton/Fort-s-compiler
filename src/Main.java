@@ -7,8 +7,10 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 
 public class Main {
-    /*
-    * Main which read a file in FORTR-S and print the Lexical Unit and the symbol table
+    /**
+    * @param args file in FORTR-S
+    * The main method will create a read, read the input file and iterate on it using nextToken
+    * The method will print the Lexical Unit and the symbol table in alphabetical order
     */
     public static void main(String[] args) {
 
@@ -17,7 +19,7 @@ public class Main {
 
         java.io.FileInputStream stream = null;
         try {
-            stream = new java.io.FileInputStream(args[0]);
+            stream = new java.io.FileInputStream(args[0]); // Creation of the Reader
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -47,8 +49,8 @@ public class Main {
         printVariable(variables);
     }
     /**
+    * @param LexicalUnit all the lexical unit found in the flex file
     * Print all the lexical unit
-    * @param LexicalUnit all the lexical unit find by the Jflex
     */
     public static void printLexicalUnit(ArrayList<Symbol> LexicalUnit){
 

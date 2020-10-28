@@ -25,8 +25,18 @@
 %init}
 
 %{
+
     public boolean openComments = true;
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn,String yytext){
+
+  /**
+  * @param unit the equivalent of the unit found in String
+  * @param yyline the line of the unit found
+  * @param yycolumn the column of the unit found
+  * @param yytext the actual unit found
+
+  * This method will check if the unit found is in the enum, and if not, we will print an error
+  */
+    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, String yytext){
       try {
           return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn,yytext);
       } catch (IllegalArgumentException e){
@@ -55,9 +65,9 @@ ProgramName     = {AlphaUpperCase}[a-zA-Z0-9]*[a-z0-9][a-zA-Z0-9]*
 Variables      = {AlphaLowerCase}[a-z0-9]*
 Unit          = {AlphaUpperCase}+
 
-Comment = \/\/  //   // blabla
-CommentBlock = \/\*  // /* blabla
-EndOfBlock = \*\/    //   blabla */
+Comment = \/\/  
+CommentBlock = \/\*
+EndOfBlock = \*\/
 
 LineTerminator = \r|\n|\r\n
 AnythingButNotEOL = [^\n\r]
