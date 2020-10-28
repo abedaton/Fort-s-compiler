@@ -5,10 +5,10 @@ BEGINPROG Pgcd
 READ(number1)
 READ(number2)
 remainder := 1
-	
+
 WHILE (remainder > 0) DO
 	mult := 0
-	WHILE (mult * number2 < number1) DO
+	WHILE (number1 > mult * number2) DO
 		mult := mult +1
 	ENDWHILE
 	mult := mult - 1
@@ -18,4 +18,4 @@ WHILE (remainder > 0) DO
 	ENDWHILE
 
 PRINT(remainder)
-ENDPROG  
+ENDPROG
