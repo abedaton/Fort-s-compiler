@@ -14,8 +14,13 @@ public class Main {
     */
     public static void main(String[] args) {
 
+      if (args.length == 0){
+        System.out.println("need a .fs file for running");
+        System.exit(0);
+      }
       Map<Object, Integer> variables = new HashMap<Object, Integer>();
       ArrayList<Symbol> symbolList = new ArrayList<Symbol>();
+
 
         java.io.FileInputStream stream = null;
         try {
