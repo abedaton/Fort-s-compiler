@@ -37,7 +37,7 @@ public class Main {
 
         FlexManager manager = new FlexManager(source);
         manager.parseFlex();
-
+        manager.printVariables();
         Parser parser = new Parser();
     }
 }
