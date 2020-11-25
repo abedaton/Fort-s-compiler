@@ -1,3 +1,5 @@
+package Scanner;
+
 public enum LexicalUnit{
     BEGINPROG,
     PROGNAME,

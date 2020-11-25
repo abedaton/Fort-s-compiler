@@ -1,3 +1,5 @@
+package Scanner;
+
 public class Symbol{
 	public static final int UNDEFINED_POSITION = -1;
 	public static final Object NO_VALUE = null;

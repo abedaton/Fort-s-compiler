@@ -5,7 +5,7 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
+package Scanner;
 import java.util.regex.PatternSyntaxException;
 
 %%// Options of the scanner
@@ -21,6 +21,7 @@ import java.util.regex.PatternSyntaxException;
 %eofval{
 	return new Symbol(LexicalUnit.EOS, yyline, yycolumn);
 %eofval}
+
 
 //Extended Regular Expressions
 
