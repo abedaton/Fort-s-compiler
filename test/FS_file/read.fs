@@ -1,5 +1,0 @@
-BEGINPROG Read
-
-READ(b)
-
-ENDPROG
