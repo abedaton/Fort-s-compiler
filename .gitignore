@@ -1,5 +1,3 @@
 *.class
 *.java~
 LexicalAnalyzer.java
-.idea/
-*.iml
