@@ -6,121 +6,102 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
+import java.util.regex.PatternSyntaxException;
 
-%%
+%%// Options of the scanner
 
-%class LexicalAnalyzer
+%class LexicalAnalyzer // Name
+%unicode               // Use unicode
+%line                  // Use line counter (yyline variable)
+%column                // Use character counter by line (yycolumn variable)
 %function nextToken
-
 %type Symbol
-%unicode
-
-%column
-%line
-
-%eofclose
-
-%init{
-
-%init}
-
-%{
-
-    public boolean openComments = true;
-
-  /**
-  * @param unit the equivalent of the unit found in String
-  * @param yyline the line of the unit found
-  * @param yycolumn the column of the unit found
-  * @param yytext the actual unit found
-
-  * This method will check if the unit found is in the enum, and if not, we will print an error
-  */
-    private Symbol ensureGoodUnit(String unit, int yyline, int yycolumn, String yytext){
-      try {
-          return new Symbol(LexicalUnit.valueOf(unit), yyline, yycolumn,yytext);
-      } catch (IllegalArgumentException e){
-          System.out.println("Error in this line: " + "\nThis is not a good Unit: " + unit);
-          System.exit(1);
-          return null;
-      }
-    }
-
-%}
+%yylexthrow PatternSyntaxException
 
 %eofval{
 	return new Symbol(LexicalUnit.EOS, yyline, yycolumn);
 %eofval}
 
+//Extended Regular Expressions
 
-%state YYINITIAL, COMMENT_STATE, MULTICOMMENT_STATE
+AlphaUpperCase    = [A-Z]
+AlphaLowerCase    = [a-z]
+Alpha             = {AlphaUpperCase}|{AlphaLowerCase}
+Numeric           = [0-9]
+AlphaNumeric      = {Alpha}|{Numeric}
+LowerAlphaNumeric	= {AlphaLowerCase}|{Numeric}
 
-AlphaUpperCase = [A-Z]
-AlphaLowerCase = [a-z]
-Num = [0-9]
-AlphaNum = {AlphaLowerCase}|{AlphaUpperCase}|{Num}
-AlphaLowerNum = {AlphaLowerCase} | {Num}
+BadInteger     = (0[0-9]+)
+Integer        = ([1-9][0-9]*)|0
+VarName        = ({AlphaLowerCase})({LowerAlphaNumeric})*
+ProgName       = ({AlphaUpperCase})(({AlphaNumeric})*({AlphaLowerCase})({AlphaNumeric})* | {Numeric}*)
+BadProgName    = ({AlphaUpperCase})+
+LineFeed       = "\n"
+CarriageReturn = "\r"
+EndLine        = ({LineFeed}{CarriageReturn}?) | ({CarriageReturn}{LineFeed}?)
+Space          = (\t | \f | " ")
+Spaces         = {Space}+
 
-ProgramName     = {AlphaUpperCase}{AlphaNum}*{AlphaLowerNum}{AlphaNum}*
-Variables      = {AlphaLowerCase}{AlphaLowerNum}*
-Unit          = {AlphaUpperCase}+
+//Declare exclusive states
+%xstate YYINITIAL, SHORTCOMMENTS, LONGCOMMENTS
 
-Comment = \/\/
-CommentBlock = \/\*
-EndOfBlock = \*\/
+%%// Identification of tokens
 
-LineTerminator = \r|\n|\r\n
-AnythingButNotEOL = [^\n\r]
+<SHORTCOMMENTS> {
+// End of comment
+{EndLine}        {yybegin(YYINITIAL); return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn, "\\n");} // go back to analysis
+.	   				     {} //ignore any character
+}
 
-Integer        = (([1-9]{Num}*)|0)
-Decimal        = \.{Num}*
-Real           = {Integer}{Decimal}?
-BadNumber      = 0{Real}
-
-%%
+<LONGCOMMENTS> {
+// End of comment
+	"*/"             {yybegin(YYINITIAL);} // go back to analysis
+  <<EOF>>          {throw new PatternSyntaxException("A comment is never closed.",yytext(),yyline);}
+	[^]					     {} //ignore any character
+}
 
 <YYINITIAL> {
-    {LineTerminator}  {return ensureGoodUnit("ENDLINE", yyline, yycolumn , "\\n");}
-    {CommentBlock}    {openComments = true; yybegin(MULTICOMMENT_STATE);}
-    {EndOfBlock}      {throw new IllegalArgumentException("*/ without /*");}
-    {Comment}         {yybegin(COMMENT_STATE);}
-    {Unit}            {return ensureGoodUnit(yytext(), yyline, yycolumn, yytext());}
-    {ProgramName}     {return ensureGoodUnit("PROGNAME", yyline, yycolumn, yytext());}
-    {Variables}       {return ensureGoodUnit("VARNAME", yyline, yycolumn, yytext());}
-    {BadNumber}       {throw new IllegalArgumentException("Error: Bad number:" + yytext());}
-    {Real}            {return ensureGoodUnit("NUMBER", yyline, yycolumn, yytext());}
-    "("               {return ensureGoodUnit("LPAREN", yyline, yycolumn, yytext());}
-    ")"               {return ensureGoodUnit("RPAREN", yyline, yycolumn, yytext());}
-    ":="              {return ensureGoodUnit("ASSIGN", yyline, yycolumn, yytext());}
-    ">"               {return ensureGoodUnit("GT", yyline, yycolumn, yytext());}
-    "="               {return ensureGoodUnit("EQ", yyline, yycolumn, yytext());}
-    "/"               {return ensureGoodUnit("DIVIDE", yyline, yycolumn, yytext());}
-    "*"               {return ensureGoodUnit("TIMES", yyline, yycolumn, yytext());}
-    "+"               {return ensureGoodUnit("PLUS", yyline, yycolumn, yytext());}
-    "-"               {return ensureGoodUnit("MINUS", yyline, yycolumn, yytext());}
-    ","               {return ensureGoodUnit("COMMA", yyline, yycolumn, yytext());}
-    "\t"              {}
-    [^]               {if (!yytext().equals(" ")) throw new IllegalArgumentException("Couldn't recognize that symbol: " + yytext());}
-}
-
-<COMMENT_STATE> {
-    {LineTerminator}        {yybegin(YYINITIAL); return ensureGoodUnit("ENDLINE", yyline, yycolumn, "\\n");}
-    {AnythingButNotEOL}     {}
-}
-
-<MULTICOMMENT_STATE> {
-    {LineTerminator}     {}
-    {CommentBlock}         {if (openComments){
-                              throw new IllegalArgumentException("You cannot imbricate comments FDP (we need to modify this)");
-                            } else {
-                              openComments = true;
-                            }
-                          }
-    {EndOfBlock}          {if (!openComments){
-                              throw new IllegalArgumentException("You have a closing comment and no opening comment !");
-                            } else {
-                              openComments = false;
-                              yybegin(YYINITIAL);}
-                            }
-    [^]                    {}
+// Comments
+    "//"              {yybegin(SHORTCOMMENTS);} // go to ignore mode
+    "/*"              {yybegin(LONGCOMMENTS);} // go to ignore mode
+// Code delimiters
+  "BEGINPROG"         {return new Symbol(LexicalUnit.BEGINPROG, yyline, yycolumn, yytext());}
+  "ENDPROG"           {return new Symbol(LexicalUnit.ENDPROG, yyline, yycolumn, yytext());}
+  ","                 {return new Symbol(LexicalUnit.COMMA, yyline, yycolumn, yytext());}
+// Assignation
+  ":="                {return new Symbol(LexicalUnit.ASSIGN, yyline, yycolumn, yytext());}
+// Parenthesis
+  "("                 {return new Symbol(LexicalUnit.LPAREN, yyline, yycolumn, yytext());}
+  ")"                 {return new Symbol(LexicalUnit.RPAREN, yyline, yycolumn, yytext());}
+// Arithmetic signs
+  "+"                 {return new Symbol(LexicalUnit.PLUS, yyline, yycolumn, yytext());}
+  "-"                 {return new Symbol(LexicalUnit.MINUS, yyline, yycolumn, yytext());}
+  "*"                 {return new Symbol(LexicalUnit.TIMES, yyline, yycolumn, yytext());}
+  "/"                 {return new Symbol(LexicalUnit.DIVIDE, yyline, yycolumn, yytext());}
+// Conditional keywords
+  "IF"                {return new Symbol(LexicalUnit.IF, yyline, yycolumn, yytext());}
+  "THEN"              {return new Symbol(LexicalUnit.THEN, yyline, yycolumn, yytext());}
+  "ELSE"              {return new Symbol(LexicalUnit.ELSE, yyline, yycolumn, yytext());}
+  "ENDIF"             {return new Symbol(LexicalUnit.ENDIF, yyline, yycolumn, yytext());}
+// Loop keywords
+  "WHILE"             {return new Symbol(LexicalUnit.WHILE, yyline, yycolumn, yytext());}
+  "DO"                {return new Symbol(LexicalUnit.DO, yyline, yycolumn, yytext());}
+  "ENDWHILE"          {return new Symbol(LexicalUnit.ENDWHILE, yyline, yycolumn, yytext());}
+// Comparison operators
+  "="                 {return new Symbol(LexicalUnit.EQ, yyline, yycolumn, yytext());}
+  ">"                 {return new Symbol(LexicalUnit.GT, yyline, yycolumn, yytext());}
+// IO keywords
+  "PRINT"             {return new Symbol(LexicalUnit.PRINT, yyline, yycolumn, yytext());}
+  "READ"              {return new Symbol(LexicalUnit.READ, yyline, yycolumn, yytext());}
+// Numbers
+  {BadInteger}        {System.err.println("Warning! Numbers with leading zeros are deprecated: " + yytext()); return new Symbol(LexicalUnit.NUMBER, yyline, yycolumn, Integer.valueOf(yytext()));}
+  {Integer}           {return new Symbol(LexicalUnit.NUMBER, yyline, yycolumn, Integer.valueOf(yytext()));}
+// Variable Names
+  {VarName}           {return new Symbol(LexicalUnit.VARNAME, yyline, yycolumn, yytext());}
+  {ProgName}          {return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn, yytext());}
+  {BadProgName}       {System.err.println("Warning! Program names in uppercase are deprecated: " + yytext()); return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn, yytext());}
+  {EndLine}           {return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn, "\\n");}
+  {Spaces}	          {} // ignore spaces
+ "*/"                 {throw new PatternSyntaxException("A comment is closed, but never opened.",yytext(),yyline);}
+  [^]                 {throw new PatternSyntaxException("Unmatched token, out of symbols",yytext(),yyline);} // unmatched token gives an error
 }
