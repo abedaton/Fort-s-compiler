@@ -5,7 +5,7 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-package Scanner;
+package scanner;
 import java.util.regex.PatternSyntaxException;
 
 %%// Options of the scanner

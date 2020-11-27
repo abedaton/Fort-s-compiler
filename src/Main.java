@@ -1,6 +1,8 @@
 
-import Parser.Parser;
-import Scanner.FlexManager;
+import parser.ActionTable;
+import parser.InvalidSyntaxException;
+import parser.Parser;
+import scanner.FlexManager;
 
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -23,7 +25,7 @@ public class Main {
      * @throws FileNotFoundException java.io.FileNotFoundException if the specified file does not exist
      */
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, SecurityException {
+    public static void main(String[] args) throws FileNotFoundException, IOException, SecurityException, InvalidSyntaxException {
 
         // Display the usage when the number of arguments is wrong (should be 1)
         if (args.length != 1) {
@@ -35,9 +37,12 @@ public class Main {
         // Open the file given in argument
         FileReader source = new FileReader(args[0]);
 
-        FlexManager manager = new FlexManager(source);
-        manager.parseFlex();
-        manager.printVariables();
-        Parser parser = new Parser();
+        FlexManager flexManager = new FlexManager(source);
+        flexManager.parseFlex();
+        Parser parser = new Parser(source, flexManager.getSymbols());
+        parser.doTheLL();
+        System.out.println(parser.getParseTree().toLaTeX());
+//        System.out.println(parser.getParseTree().getRoot().toString());
+
     }
 }

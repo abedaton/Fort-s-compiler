@@ -1,12 +1,14 @@
-package Scanner;
+package scanner;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class FlexManager {
     private final TreeMap<String,Symbol> variablesTable;
+    private final ArrayList<Symbol> symbols = new ArrayList<>();
     final LexicalAnalyzer analyzer;
 
     public FlexManager(FileReader source){
@@ -26,7 +28,7 @@ public class FlexManager {
         Symbol symbol = null;
         // We iterate while we do not reach the end of the file (marked by EOS)
         while (!(symbol = analyzer.nextToken()).getType().equals(LexicalUnit.EOS)) {
-            System.out.println(symbol.toString());
+            symbols.add(symbol);
             // If it is a variable, add it to the table
             if (symbol.getType().equals(LexicalUnit.VARNAME)) {
                 if (!variablesTable.containsKey(symbol.getValue())) {
@@ -48,5 +50,9 @@ public class FlexManager {
 
     public TreeMap<String, Symbol> getVariablesTable(){
         return variablesTable;
+    }
+
+    public ArrayList<Symbol> getSymbols() {
+        return symbols;
     }
 }

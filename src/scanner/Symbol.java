@@ -1,4 +1,6 @@
-package Scanner;
+package scanner;
+
+import parser.LexicalVariable;
 
 public class Symbol{
 	public static final int UNDEFINED_POSITION = -1;

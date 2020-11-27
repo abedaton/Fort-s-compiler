@@ -1,4 +1,4 @@
-package Scanner;
+package scanner;
 
 public enum LexicalUnit{
     BEGINPROG,
