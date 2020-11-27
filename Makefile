@@ -6,7 +6,7 @@ docOut = doc/javadoc
 all:
 	jflex $(scannerPath)/LexicalAnalyzer.flex
 	javac -d bin -cp src src/Main.java
-	jar cfe  Main -C bin .
+	jar cfe  bin/Main -C bin .
 	javadoc $(jarOut)-private -sourcepath ./src -d $(docOut) -subpackages . -Xdoclint:none
 
 clean:
