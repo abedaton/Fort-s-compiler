@@ -45,24 +45,7 @@ public class Parser {
                     currentNode = produce(currentNode, currentInput, symbol, value, builder);
             }
         }
-        System.out.println(stack);
-        if (!stack.peek().equals("$")){
-            while (!stack.empty() && !stack.peek().equals("$")) {
-                if (actionTable.getData(stack.peek(), "epsi") != null) {
-                    Integer ruleNumber = actionTable.getData(stack.peek(), "epsi");
-                    builder.append(ruleNumber);
-                    currentNode = produceEpsilon(currentNode, ruleNumber);
-                    stack.pop();
-                }
-            }
-        }
         System.out.println(builder.toString());
-    }
-
-    private void checkIfNull(Object object, Symbol symbol, String topStack, Object value) throws InvalidSyntaxException {
-        if (object == null){
-            throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), topStack, value.toString());
-        }
     }
 
 
@@ -92,23 +75,7 @@ public class Parser {
             addStack(tree, ruleNumber);
             tree = tree.getFirstChild();
         } else{
-            ruleNumber = actionTable.getData(stack.peek(), "epsi");
-            checkIfNull(ruleNumber, symbol, stack.peek(), value);
-            stack.pop();
-            builder.append(ruleNumber).append(" ");
-
-            tree = produceEpsilon(tree, ruleNumber);
-        }
-        return tree;
-    }
-
-    private ParseTree produceEpsilon(ParseTree tree, Integer ruleNumber){
-        if (!rules.getRule(ruleNumber).equals(Collections.singletonList("epsi"))) {
-            addStack(tree, ruleNumber);
-            tree = tree.getFirstChild();
-        } else{
-            tree.addChild(new ParseTree(new Variable("epsi")));
-            tree = tree.getNext();
+            throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), stack.peek(), value.toString());
         }
         return tree;
     }
