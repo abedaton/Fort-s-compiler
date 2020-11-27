@@ -7,4 +7,4 @@ all:
 	jflex $(scannerPath)/LexicalAnalyzer.flex
 	javac -d bin -cp src src/Main.java
 	jar cfe dist/Part2.jar Main -C bin .
-	javadoc -private src/Main.java -d $(docOut)
+	javadoc -private -sourcepath ./src -d $(docOut) -subpackages . -Xdoclint:none

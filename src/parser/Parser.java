@@ -1,19 +1,14 @@
 package parser;
 
-import com.sun.javafx.css.Rule;
 import scanner.LexicalUnit;
 import scanner.Symbol;
 
-import javax.sound.midi.SysexMessage;
-import javax.xml.validation.Validator;
 import java.io.FileReader;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 public class Parser {
     private final FileReader source;
-//    private final Queue<String> queue = new LinkedList<String>();
     private final Stack<String> stack = new Stack<String>();
     private final ActionTable actionTable = new ActionTable();
     private final ArrayList<Symbol> symbols;
