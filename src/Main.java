@@ -28,8 +28,8 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException, SecurityException, InvalidSyntaxException {
 
         // Display the usage when the number of arguments is wrong (should be 1)
-        if (args.length != 1) {
-            System.out.println("Usage:  java -jar Part1.jar file.fs\n"
+        if (!correctCommand(args)) {
+            System.out.println("Usage:  java -jar part2.jar file.fs\n"
                     + "or\tjava " + Main.class.getSimpleName() + " file.fs");
             System.exit(0);
         }
@@ -44,5 +44,21 @@ public class Main {
         System.out.println(parser.getParseTree().toLaTeX());
 //        System.out.println(parser.getParseTree().getRoot().toString());
 
+    }
+
+    private static boolean correctCommand(String[] args){
+        if (args.length == 1) {
+            return true;
+        } else if(args.length == 2){
+            if (args[0].equals("-v"))
+                return true;
+        } else if (args.length == 3){
+            if (args[0].equals("-wt") )
+                return true;
+        } else if (args.length == 4){
+            if (args[0].equals("-v") && args[1].equals("-wt") )
+                return true;
+        }
+        return false;
     }
 }
