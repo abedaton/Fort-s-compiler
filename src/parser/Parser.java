@@ -25,8 +25,22 @@ public class Parser {
         return this.node;
     }
 
+    public String prettyPrint(){
+        StringBuilder printRules = new StringBuilder();
+        String[] rulesString = builder.toString().split(" ");
+        for(String rule : rulesString){
+            printRules.append("(").append(rule).append(") ");
+            int ruleNumber = Integer.parseInt(rule);
+            printRules.append( rules.getRuleVariable(ruleNumber)+ " -> " + rules.getRule(ruleNumber).toString());
+            printRules.append("\n");
 
-    public void doTheLL() throws InvalidSyntaxException {
+        }
+        return printRules.toString();
+    }
+
+
+
+    public String doTheLL() throws InvalidSyntaxException {
         stack.push("$");
         stack.push("PROGRAM");
         node = new ParseTree(new Variable(LexicalVariable.PROGRAM));
@@ -39,15 +53,15 @@ public class Parser {
             Object value = symbols.get(i).getValue();   // nullable
             String currentInput = transform(type.toString());
             Symbol symbol = symbols.get(i);
-            System.out.println("Current input = " + currentInput );
-            System.out.println("topStack = " + topStack);
+            //System.out.println("Current input = " + currentInput );
+            //System.out.println("topStack = " + topStack);
             if (topStack != null && topStack.equals(currentInput)) {
                 currentNode = match(currentNode, currentInput, value);
                 i++;
             } else {
                     currentNode = produce(currentNode, currentInput, symbol, value);
             }
-            System.out.println(stack);
+            //System.out.println(stack);
         }
         while (stack.peek() != "$"){
             Integer ruleNumber = actionTable.getData(stack.peek(), "$");
@@ -60,7 +74,7 @@ public class Parser {
                 ;//throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), stack.peek(), value.toString());
             }
         }
-        System.out.println(builder.toString());
+        return builder.toString();
     }
 
 

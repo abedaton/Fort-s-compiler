@@ -63,7 +63,7 @@ public class Main {
             FlexManager flexManager = new FlexManager(source);
             flexManager.parseFlex();
             Parser parser = new Parser(source, flexManager.getSymbols());
-            parser.doTheLL();
+            System.out.println(parser.doTheLL());
         } else if(args.length == 2 && args[0].equals(("-v"))){
             FileReader source = new FileReader(args[1]);
 
@@ -71,7 +71,7 @@ public class Main {
             flexManager.parseFlex();
             Parser parser = new Parser(source, flexManager.getSymbols());
             parser.doTheLL();
-            // TODO PRETTY PRINT
+            System.out.println(parser.prettyPrint());
         } else if(args.length == 3 && args[0].equals(("-wt"))){
             FileReader source = new FileReader(args[2]);
 
@@ -88,8 +88,9 @@ public class Main {
             flexManager.parseFlex();
             Parser parser = new Parser(source, flexManager.getSymbols());
             parser.doTheLL();
+            System.out.println(parser.prettyPrint());
             System.out.println(parser.getParseTree().toLaTeX());
-            // TODO Create File Tex and pretty print
+            // TODO Create File Tex
         } else{
             System.out.println("Usage:  java -jar part2.jar file.fs\n"
                     + "or\tjava " + Main.class.getSimpleName() + " file.fs");

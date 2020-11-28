@@ -4,11 +4,14 @@ import java.util.*;
 
 public class Rules {
     Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
+    List<String> variables = new ArrayList<>();
 
     public Rules(){
         initRules();
+        initVariable();
     }
 
+    public String getRuleVariable(int ruleNbr) {return variables.get(ruleNbr-1);}
 
     public List<String> getRule(int ruleNbr){
         return rules.get(ruleNbr);
@@ -18,6 +21,41 @@ public class Rules {
         List<String> rule = new ArrayList<>(getRule(ruleNbr));
         Collections.reverse(rule);
         return rule;
+    }
+
+    private void initVariable(){
+        variables.add("PROGRAM");
+        variables.add("SPACE");
+        variables.add("SPACE");
+        variables.add("CODE");
+        variables.add("CODE");
+        variables.add("INSTRUCTION");
+        variables.add("INSTRUCTION");
+        variables.add("INSTRUCTION");
+        variables.add("INSTRUCTION");
+        variables.add("INSTRUCTION");
+        variables.add("ASSIGN");
+        variables.add("EXPRARITH");
+        variables.add("EXPRARITHBIS");
+        variables.add("EXPRARITHBIS");
+        variables.add("EXPRARITHBIS");
+        variables.add("PROD");
+        variables.add("PROD'");
+        variables.add("PRODBIS");
+        variables.add("PRODBIS'");
+        variables.add("ATOM'");
+        variables.add("ATOM'");
+        variables.add("ATOM");
+        variables.add("ATOM");
+        variables.add("IFVAR'");
+        variables.add("IFSEQ'");
+        variables.add("IFSEQ'");
+        variables.add("COND");
+        variables.add("COMP");
+        variables.add("COMP");
+        variables.add("WHILEVAR");
+        variables.add("PRINTVAR");
+        variables.add("READVAR");
     }
 
     private void initRules() {
