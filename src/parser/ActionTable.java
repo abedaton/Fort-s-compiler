@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class ActionTable {
     private final String[] column = {"BEGINPROG", "PROGNAME", "ENDLINE", "ENDPROG", "(", ")", ":=", "+", "-", "*", "/", "VARNAME", "NUMBER", "IF", "THEN",
-            "ELSE", "ENDIF", "=", ">", "WHILE", "DO", "ENDWHILE", "PRINT", "READ", "epsi"};
+            "ELSE", "ENDIF", "=", ">", "WHILE", "DO", "ENDWHILE", "PRINT", "READ", "$"};
 
     private final String[] row = {"PROGRAM", "SPACE", "CODE", "INSTRUCTION", "ASSIGN", "EXPRARITH", "EXPRARITHBIS", "PROD", "PRODBIS", "ATOM",
             "IFVAR", "IFSEQ", "COND", "COMP", "WHILEVAR", "PRINTVAR", "READVAR"};
@@ -70,17 +70,32 @@ public class ActionTable {
 
     private void initData(){
         insertIntoData("PROGRAM", "ENDLINE", 1);
-        insertIntoData("PROGRAM", "epsi", 1);
+        insertIntoData("PROGRAM", "BEGINPROG", 1);
 
         insertIntoData("SPACE", "ENDLINE", 2);
-        insertIntoData("SPACE", "epsi", 3);
+        insertIntoData("SPACE", "BEGINPROG", 3);
+        insertIntoData("SPACE", ":=", 3);
+        insertIntoData("SPACE", "VARNAME", 3);
+        insertIntoData("SPACE", "IF", 3);
+        insertIntoData("SPACE", "ELSE", 3);
+        insertIntoData("SPACE", "ENDIF", 3);
+        insertIntoData("SPACE", "WHILE", 3);
+        insertIntoData("SPACE", "ENDWHILE", 3);
+        insertIntoData("SPACE", "PRINT", 3);
+        insertIntoData("SPACE", "READ", 3);
+        insertIntoData("SPACE", "$", 3);
+        insertIntoData("SPACE", "ENDPROG", 3);
+
 
         insertIntoData("CODE", "VARNAME", 4);
         insertIntoData("CODE", "IF", 4);
         insertIntoData("CODE", "WHILE", 4);
         insertIntoData("CODE", "PRINT", 4);
         insertIntoData("CODE", "READ", 4);
-        insertIntoData("CODE", "epsi", 5);
+        insertIntoData("CODE", "ENDPROG", 5);
+        insertIntoData("CODE", "ELSE", 5);
+        insertIntoData("CODE", "ENDIF", 5);
+        insertIntoData("CODE", "ENDWHILE", 5);
 
         insertIntoData("INSTRUCTION", "VARNAME", 6);
         insertIntoData("INSTRUCTION", "IF", 7);
@@ -90,13 +105,29 @@ public class ActionTable {
 
         insertIntoData("ASSIGN", "VARNAME", 11);
 
-        insertIntoData("EXPRARITH", "*", 12);
-        insertIntoData("EXPRARITH", "/", 12);
-        insertIntoData("EXPRARITH", "epsi", 12);
+        insertIntoData("EXPRARITH", "-", 12);
+        insertIntoData("EXPRARITH", "VARNAME", 12);
+        insertIntoData("EXPRARITH", "(", 12);
+        insertIntoData("EXPRARITH", "NUMBER", 12);
 
         insertIntoData("EXPRARITHBIS", "+", 13);
         insertIntoData("EXPRARITHBIS", "-", 14);
-        insertIntoData("EXPRARITHBIS", "epsi", 15);
+        insertIntoData("EXPRARITHBIS", "ENDLINE", 15);
+        insertIntoData("EXPRARITHBIS", "ENDPROG", 15);
+        insertIntoData("EXPRARITHBIS", ")", 15);
+        insertIntoData("EXPRARITHBIS", "VARNAME", 15);
+        insertIntoData("EXPRARITHBIS", "", 15);
+        insertIntoData("EXPRARITHBIS", "IF", 15);
+        insertIntoData("EXPRARITHBIS", "ELSE", 15);
+        insertIntoData("EXPRARITHBIS", "ENDIF", 15);
+        insertIntoData("EXPRARITHBIS", "=", 15);
+        insertIntoData("EXPRARITHBIS", ">", 15);
+        insertIntoData("EXPRARITHBIS", "WHILE", 15);
+        insertIntoData("EXPRARITHBIS", "ENDLINE", 15);
+        insertIntoData("EXPRARITHBIS", "ENDWHILE", 15);
+        insertIntoData("EXPRARITHBIS", "PRINT", 15);
+        insertIntoData("EXPRARITHBIS", "READ", 15);
+
 
         insertIntoData("PROD", "(", 16);
         insertIntoData("PROD", "-", 16);
@@ -105,7 +136,23 @@ public class ActionTable {
 
         insertIntoData("PRODBIS", "*", 17);
         insertIntoData("PRODBIS", "/", 18);
-        insertIntoData("PRODBIS", "epsi", 19);
+        insertIntoData("PRODBIS", "ENDLINE", 19);
+        insertIntoData("PRODBIS", "ENDPROG", 19);
+        insertIntoData("PRODBIS", ")", 19);
+        insertIntoData("PRODBIS", "+", 19);
+        insertIntoData("PRODBIS", "-", 19);
+        insertIntoData("PRODBIS", "", 19);
+        insertIntoData("PRODBIS", "VARNAME", 19);
+        insertIntoData("PRODBIS", "IF", 19);
+        insertIntoData("PRODBIS", "ELSE", 19);
+        insertIntoData("PRODBIS", "ENDIF", 19);
+        insertIntoData("PRODBIS", "=", 19);
+        insertIntoData("PRODBIS", ">", 19);
+        insertIntoData("PRODBIS", "WHILE", 19);
+        insertIntoData("PRODBIS", "ENDWHILE", 19);
+        insertIntoData("PRODBIS", "PRINT", 19);
+        insertIntoData("PRODBIS", "READ", 19);
+
 
         insertIntoData("ATOM", "(", 23);
         insertIntoData("ATOM", "-", 20);

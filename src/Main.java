@@ -35,13 +35,7 @@ public class Main {
         }
 
         // Open the file given in argument
-        FileReader source = new FileReader(args[0]);
-
-        FlexManager flexManager = new FlexManager(source);
-        flexManager.parseFlex();
-        Parser parser = new Parser(source, flexManager.getSymbols());
-        parser.doTheLL();
-        System.out.println(parser.getParseTree().toLaTeX());
+        execRight(args);
 //        System.out.println(parser.getParseTree().getRoot().toString());
 
     }
@@ -60,5 +54,46 @@ public class Main {
                 return true;
         }
         return false;
+    }
+
+    private static void execRight(String[] args) throws FileNotFoundException, IOException, SecurityException, InvalidSyntaxException{
+        if (args.length == 1) {
+            FileReader source = new FileReader(args[0]);
+
+            FlexManager flexManager = new FlexManager(source);
+            flexManager.parseFlex();
+            Parser parser = new Parser(source, flexManager.getSymbols());
+            parser.doTheLL();
+        } else if(args.length == 2 && args[0].equals(("-v"))){
+            FileReader source = new FileReader(args[1]);
+
+            FlexManager flexManager = new FlexManager(source);
+            flexManager.parseFlex();
+            Parser parser = new Parser(source, flexManager.getSymbols());
+            parser.doTheLL();
+            // TODO PRETTY PRINT
+        } else if(args.length == 3 && args[0].equals(("-wt"))){
+            FileReader source = new FileReader(args[2]);
+
+            FlexManager flexManager = new FlexManager(source);
+            flexManager.parseFlex();
+            Parser parser = new Parser(source, flexManager.getSymbols());
+            parser.doTheLL();
+            System.out.println(parser.getParseTree().toLaTeX());
+            // TODO Create File Tex
+        } else if(args.length == 4 && args[0].equals(("-v")) && args[1].equals("-wt")){
+            FileReader source = new FileReader(args[3]);
+
+            FlexManager flexManager = new FlexManager(source);
+            flexManager.parseFlex();
+            Parser parser = new Parser(source, flexManager.getSymbols());
+            parser.doTheLL();
+            System.out.println(parser.getParseTree().toLaTeX());
+            // TODO Create File Tex and pretty print
+        } else{
+            System.out.println("Usage:  java -jar part2.jar file.fs\n"
+                    + "or\tjava " + Main.class.getSimpleName() + " file.fs");
+            System.exit(0);
+            } //TODO MAKE correct
     }
 }

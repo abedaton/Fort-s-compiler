@@ -14,6 +14,7 @@ public class Parser {
     private final ArrayList<Symbol> symbols;
     private final Rules rules = new Rules();
     private ParseTree node;
+    private StringBuilder builder;
 
     public Parser(FileReader source, ArrayList<Symbol> symbols){
         this.source = source;
@@ -30,7 +31,7 @@ public class Parser {
         stack.push("PROGRAM");
         node = new ParseTree(new Variable(LexicalVariable.PROGRAM));
         ParseTree currentNode = node;
-        StringBuilder builder = new StringBuilder();
+        builder = new StringBuilder();
         int i = 0;
         while (i < symbols.size()) {
             String topStack = stack.peek(); // nullable
@@ -38,11 +39,25 @@ public class Parser {
             Object value = symbols.get(i).getValue();   // nullable
             String currentInput = transform(type.toString());
             Symbol symbol = symbols.get(i);
+            System.out.println("Current input = " + currentInput );
+            System.out.println("topStack = " + topStack);
             if (topStack != null && topStack.equals(currentInput)) {
                 currentNode = match(currentNode, currentInput, value);
                 i++;
             } else {
-                    currentNode = produce(currentNode, currentInput, symbol, value, builder);
+                    currentNode = produce(currentNode, currentInput, symbol, value);
+            }
+            System.out.println(stack);
+        }
+        while (stack.peek() != "$"){
+            Integer ruleNumber = actionTable.getData(stack.peek(), "$");
+            if (ruleNumber != null) {
+                stack.pop();
+                currentNode = addStack(currentNode,ruleNumber);
+                builder.append(ruleNumber).append(" ");
+
+            } else {
+                ;//throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), stack.peek(), value.toString());
             }
         }
         System.out.println(builder.toString());
@@ -68,21 +83,30 @@ public class Parser {
         return tree.getNext();
     }
 
-    private ParseTree produce(ParseTree tree, String input, Symbol symbol, Object value, StringBuilder builder) throws InvalidSyntaxException {
+    private ParseTree produce(ParseTree tree, String input, Symbol symbol, Object value) throws InvalidSyntaxException {
         Integer ruleNumber = actionTable.getData(stack.peek(), input);
         if (ruleNumber != null) {
             stack.pop();
-            addStack(tree, ruleNumber);
-            tree = tree.getFirstChild();
+            tree = addStack(tree, ruleNumber);
+            builder.append(ruleNumber).append(" ");
+
         } else{
             throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), stack.peek(), value.toString());
         }
         return tree;
     }
 
-    private void addStack(ParseTree tree, int ruleNumber){
-        addTree(tree,rules.getRule(ruleNumber));
-        stack.addAll(rules.getRuleReversed(ruleNumber));
+    private ParseTree addStack(ParseTree tree, int ruleNumber){
+        List<String> product = rules.getRule(ruleNumber);
+        if (product.size()!= 0) {
+            addTree(tree, product);
+            stack.addAll(rules.getRuleReversed(ruleNumber));
+            tree = tree.getFirstChild();
+        } else {
+            tree.addChild(new ParseTree(new Variable(" ")));
+            tree = tree.getNext();
+        }
+        return tree;
     }
 
 

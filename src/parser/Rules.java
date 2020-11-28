@@ -23,9 +23,9 @@ public class Rules {
     private void initRules() {
         rules.put(1, Arrays.asList("SPACE", "BEGINPROG", "PROGNAME", "SPACE", "CODE", "ENDPROG", "SPACE"));
         rules.put(2, Arrays.asList("ENDLINE", "SPACE"));
-        rules.put(3, Collections.singletonList("epsi"));
+        rules.put(3, new ArrayList<>());
         rules.put(4, Arrays.asList("INSTRUCTION", "SPACE", "CODE"));
-        rules.put(5, Collections.singletonList("epsi"));
+        rules.put(5, new ArrayList<>());
         rules.put(6, Collections.singletonList("ASSIGN"));
         rules.put(7, Collections.singletonList("IFVAR"));
         rules.put(8, Collections.singletonList("WHILEVAR"));
@@ -35,11 +35,11 @@ public class Rules {
         rules.put(12, Arrays.asList("PROD", "EXPRARITHBIS"));
         rules.put(13, Arrays.asList("+", "PROD"));
         rules.put(14, Arrays.asList("-", "PROD"));
-        rules.put(15, Collections.singletonList("epsi"));
+        rules.put(15, new ArrayList<>());
         rules.put(16, Arrays.asList("ATOM", "PRODBIS"));
         rules.put(17, Arrays.asList("*", "ATOM", "PRODBIS"));
         rules.put(18, Arrays.asList("/", "ATOM", "PRODBIS"));
-        rules.put(19, Collections.singletonList("epsi"));
+        rules.put(19, new ArrayList<>());
         rules.put(20, Arrays.asList("-", "ATOM"));
         rules.put(21, Collections.singletonList("VARNAME"));
         rules.put(22, Collections.singletonList("NUMBER"));
