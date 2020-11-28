@@ -3,7 +3,10 @@ package parser;
 import scanner.LexicalUnit;
 import scanner.Symbol;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -23,6 +26,19 @@ public class Parser {
 
     public ParseTree getParseTree(){
         return this.node;
+    }
+
+    public String latexTree(){
+        return node.toLaTeX();
+    }
+
+    public void creatLatexFile(String fileName) throws IOException {
+        File file = new File(fileName);
+        if (file.createNewFile()){
+            FileWriter writer = new FileWriter(fileName);
+            writer.write(latexTree());
+            writer.close();
+        }
     }
 
     public String prettyPrint(){

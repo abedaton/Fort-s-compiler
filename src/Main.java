@@ -79,7 +79,8 @@ public class Main {
             flexManager.parseFlex();
             Parser parser = new Parser(source, flexManager.getSymbols());
             parser.doTheLL();
-            System.out.println(parser.getParseTree().toLaTeX());
+            //System.out.println(parser.getParseTree().toLaTeX());
+            parser.creatLatexFile(args[2]);
             // TODO Create File Tex
         } else if(args.length == 4 && args[0].equals(("-v")) && args[1].equals("-wt")){
             FileReader source = new FileReader(args[3]);
@@ -89,7 +90,8 @@ public class Main {
             Parser parser = new Parser(source, flexManager.getSymbols());
             parser.doTheLL();
             System.out.println(parser.prettyPrint());
-            System.out.println(parser.getParseTree().toLaTeX());
+            //System.out.println(parser.getParseTree().toLaTeX());
+            parser.creatLatexFile(args[2]);
             // TODO Create File Tex
         } else{
             System.out.println("Usage:  java -jar part2.jar file.fs\n"
