@@ -1,6 +1,12 @@
 package parser;
 
+import scanner.LexicalUnit;
+
 public class InvalidSyntaxException extends Exception{
+    public InvalidSyntaxException(String message) {
+        super(message);
+    }
+
     public InvalidSyntaxException(String message, int lineNbr){
         super(message + " on line " + lineNbr);
     }
@@ -13,24 +19,16 @@ public class InvalidSyntaxException extends Exception{
         super(message + " on line " + lineNbr + ", " + " unexpected token: " + found);
     }
 
-    public InvalidSyntaxException(String message) {
-        super(message);
+
+    private static String expected(String expected, String found){
+        return ", expected: " + expected + " but found: " + found;
     }
 
-    public static String approxSting(String expected, String found){
-        // ", expected: " + expected + " but found: " + found
-        if (expected.startsWith(found.substring(found.length()/2)) || expected.endsWith(found.substring(found.length()/2))) {
-            return ", got: " + found + " did you mean " + expected + " ?";
-        }else{
-            return ", expected: " + expected + " but found: " + found;
-        }
-    }
-
-    public static String handleEndOfFile(String peek, String found){
+    private static String handleEndOfFile(String peek, String found){
         if (peek.equals("$")){
             return ", found code after ENDPROG";
         } else {
-            return approxSting(peek, found) ;
+            return expected(peek, found) ;
         }
     }
 }
