@@ -1,7 +1,5 @@
 package parser;
 
-import scanner.Symbol;
-
 public class InvalidSyntaxException extends Exception{
     public InvalidSyntaxException(String message, int lineNbr){
         super(message + " on line " + lineNbr);

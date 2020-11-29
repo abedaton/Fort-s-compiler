@@ -1,7 +1,5 @@
 package parser;
 
-import javax.xml.validation.Validator;
-
 public class Variable {
     private boolean terminal;
     private boolean isVar = false;

@@ -1,7 +1,5 @@
 package parser;
 
-import scanner.LexicalUnit;
-
 import java.util.*;
 import java.util.stream.IntStream;
 
