@@ -28,11 +28,6 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException, SecurityException, InvalidSyntaxException {
 
         // Display the usage when the number of arguments is wrong (should be 1)
-        if (!correctCommand(args)) {
-            System.out.println("Usage:  java -jar part2.jar file.fs\n"
-                    + "or\tjava " + Main.class.getSimpleName() + " file.fs");
-            System.exit(0);
-        }
 
         // Open the file given in argument
         execRight(args);
@@ -94,8 +89,8 @@ public class Main {
             parser.creatLatexFile(args[2]);
             // TODO Create File Tex
         } else{
-            System.out.println("Usage:  java -jar part2.jar file.fs\n"
-                    + "or\tjava " + Main.class.getSimpleName() + " file.fs");
+            System.out.println("Usage:  java -jar part2.jar [OPTIONS] file.fs\n"
+                    + "or\tjava " + Main.class.getSimpleName() + "[OPTIONS] file.fs\n"  + "OPTION : -v to have a more verbose output\n -wt latex.tex to obtain the derivation tree in a file latex");
             System.exit(0);
             } //TODO MAKE correct
     }
