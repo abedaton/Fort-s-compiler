@@ -73,9 +73,9 @@ public class Main {
             FlexManager flexManager = new FlexManager(source);
             flexManager.parseFlex();
             Parser parser = new Parser(flexManager.getSymbols());
-            parser.doTheLL();
+            System.out.println(parser.doTheLL());
             //System.out.println(parser.getParseTree().toLaTeX());
-            parser.creatLatexFile(args[2]);
+            parser.creatLatexFile(args[1]);
         } else if(args.length == 4 && args[0].equals(("-v")) && args[1].equals("-wt")){
             FileReader source = new FileReader(args[3]);
 
