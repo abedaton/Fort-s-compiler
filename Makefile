@@ -11,3 +11,7 @@ all:
 
 clean:
 	rm -rf bin/* doc/ *.class out/  $(jarOut)
+
+purge: clean
+	rm src/scanner/LexicalAnalyzer.java
+	rm *.tex

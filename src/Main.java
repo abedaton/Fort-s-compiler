@@ -1,5 +1,4 @@
 
-import parser.ActionTable;
 import parser.InvalidSyntaxException;
 import parser.Parser;
 import scanner.FlexManager;
@@ -33,22 +32,6 @@ public class Main {
         execRight(args);
 //        System.out.println(parser.getParseTree().getRoot().toString());
 
-    }
-
-    private static boolean correctCommand(String[] args){
-        if (args.length == 1) {
-            return true;
-        } else if(args.length == 2){
-            if (args[0].equals("-v"))
-                return true;
-        } else if (args.length == 3){
-            if (args[0].equals("-wt") )
-                return true;
-        } else if (args.length == 4){
-            if (args[0].equals("-v") && args[1].equals("-wt") )
-                return true;
-        }
-        return false;
     }
 
     private static void execRight(String[] args) throws IOException, SecurityException, InvalidSyntaxException{
