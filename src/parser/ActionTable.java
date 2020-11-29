@@ -1,10 +1,14 @@
 package parser;
 
-import scanner.LexicalUnit;
-
-import java.util.*;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
+
+/**
+ * The ActionTable class is used to represent an ActionTable,
+ * it contains columns and rows used to access elements more easily in the action table.
+ * The data of the action table is contained in the data integer list
+ */
 public class ActionTable {
     private final String[] column = {"BEGINPROG", "PROGNAME", "ENDLINE", "ENDPROG", "(", ")", ":=", "+", "-", "*", "/", "VARNAME", "NUMBER", "IF", "THEN",
             "ELSE", "ENDIF", "=", ">", "WHILE", "DO", "ENDWHILE", "PRINT", "READ", "$"};
@@ -14,11 +18,19 @@ public class ActionTable {
 
     private final Integer[][] data = new Integer[row.length][column.length];
 
+    /**
+     * The default constructor: calls initData
+     */
     public ActionTable(){
         initData();
     }
 
-
+    /**
+     * This method is used to convert column name in an index.
+     * The method iterates through the list of columns to find the right name
+     * @param name the name in string of the column
+     * @return the index of the column asked or -1 if not found
+     */
     public int getColumnIndex(String name){
         OptionalInt index = IntStream.range(0, this.column.length).filter(i -> this.column[i].equals(name)).findFirst();
         if (index.isPresent()){
@@ -27,6 +39,12 @@ public class ActionTable {
         return -1;
     }
 
+    /**
+     * This method is used to convert row name in an index.
+     * The method iterates through the list of rows to find the right name
+     * @param name the name in string of the row
+     * @return the index of the row asked or -1 if not found
+     */
     public int getRowIndex(String name){
         OptionalInt index = IntStream.range(0, this.row.length).filter(i -> this.row[i].equals(name)).findFirst();
         if (index.isPresent()){
@@ -35,6 +53,12 @@ public class ActionTable {
         return -1;
     }
 
+    /**
+     *  This method will insert data into the action table at row rowName and column columnName
+     * @param rowName the name of the row where we want to insert data
+     * @param columnName the name of the column where we want to insert data
+     * @param value the value of the data we want to insert
+     */
     public void insertIntoData(String rowName, String columnName, int value){
         int rowIndex = getRowIndex(rowName);
         if (rowIndex == -1){
@@ -44,10 +68,15 @@ public class ActionTable {
         if (colIndex == -1){
             return;
         }
-
         data[rowIndex][colIndex] = value;
     }
 
+    /**
+     * This method is use to get data out of the action table
+     * @param rowName the name of the row
+     * @param columnName the name of the column
+     * @return the data from the action table at row rowName and column columnName
+     */
     public Integer getData(String rowName, String columnName){
         int rowIndex = getRowIndex(rowName);
         if (rowIndex == -1){
@@ -61,11 +90,21 @@ public class ActionTable {
         return data[rowIndex][colIndex];
     }
 
+    /**
+     * This method overloads getData(String, String) by taking objects instead of strings
+     * @param rowName the name of the row
+     * @param columnName the name of the column
+     * @return the call of getData call with rowName and columnName as strings
+     */
     public Integer getData(Object rowName, Object columnName) {
         return getData(rowName.toString(), columnName.toString());
     }
 
 
+    /**
+     * Method used to fill the action table with rule numbers
+     * if an entry does not have any number, then the value will be null
+     */
     private void initData(){
         insertIntoData("PROGRAM", "ENDLINE", 1);
         insertIntoData("PROGRAM", "BEGINPROG", 1);

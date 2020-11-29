@@ -1,8 +1,5 @@
 package parser;
 
-import scanner.Symbol;
-
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -18,10 +15,9 @@ import java.util.ListIterator;
  * 
  * @author Léo Exibard, Sarah Winter
  */
-
 public class ParseTree {
     private Variable label; // The label of the root of the tree
-    private List<ParseTree> children; // Its children, which are trees themselves
+    private final List<ParseTree> children; // Its children, which are trees themselves
     private ParseTree father;
 
     /**
@@ -31,12 +27,12 @@ public class ParseTree {
      */
     public ParseTree(Variable lbl) {
         this.label = lbl;
-        this.children = new ArrayList<ParseTree>(); // This tree has no children
+        this.children = new ArrayList<>(); // This tree has no children
         this.father = null;
     }
 
     /**
-     * Creates a tree with root labeled by lbl and children chdn.
+     * Creates a tree with root labeled by lbl and children
      * 
      * @param lbl  The label of the root
      * @param chdn Its children
@@ -47,43 +43,83 @@ public class ParseTree {
         this.father = null;
     }
 
+    /**
+     * Creates a tree with a root, a father and some children
+     * @param lbl the label of the node
+     * @param chdn the children of the node
+     * @param father the father of the node
+     */
     public ParseTree(Variable lbl, List<ParseTree> chdn, ParseTree father){
         this.label = lbl;
         this.children = chdn;
         this.father = father;
     }
 
+    /**
+     * Creates a node with a father but no children
+     * @param lbl the label of the node
+     * @param father the father of the node
+     */
     public ParseTree(Variable lbl, ParseTree father){
         this.label = lbl;
-        this.children = new ArrayList<ParseTree>();
+        this.children = new ArrayList<>();
         this.father = father;
     }
 
+    /**
+     * This method will add a child to the child list and set the father of the new node as the current node
+     * @param child a ParseTree node that represents the child
+     */
     public void addChild(ParseTree child) {
         child.setFather(this);
         this.children.add(child);
     }
 
+    /**
+     * Set the father of the current node
+     * @param father the father of the current node
+     */
     public void setFather(ParseTree father){
         this.father = father;
     }
 
+    /**
+     * get the father of the current node
+     * @return the father of the current node
+     */
     public ParseTree getFather(){
         return this.father;
     }
 
+    /**
+     * This method will return the list of children of the current node
+     * @return the children of the current node
+     */
     public List<ParseTree> getChildren(){
         return this.children;
     }
 
+    /**
+     * This method gets the first child of the current node
+     * @return the first child of the current node
+     */
     public ParseTree getFirstChild(){
         return this.children.get(0);
     }
 
+    /**
+     * Gets the label of the current node
+     * @return the label of the current node
+     */
     public Variable getLabel(){
         return this.label;
     }
 
+    /**
+     * Generates a {@link ListIterator} used too iterates through the children
+     * if there is no next children, returns the brother of the father of the current node
+     * @return the next child or the brother of the father
+     */
     public ParseTree getNext(){
         if (this.father == null) {
             return null;
@@ -92,7 +128,7 @@ public class ParseTree {
         while (it.hasNext()){
             if (it.next().equals(this)){
                 if (it.hasNext()) {
-                    return it.next(); // frere de toi meme
+                    return it.next();
                 }
             }
         }
@@ -119,19 +155,10 @@ public class ParseTree {
         }
         treeTeX.append("]");
         return treeTeX.toString();
-
-        /*treeTeX.append(label.toTexString());
-        if (this.label.isTerminal()) { treeTeX.append(", terminal");}
-        treeTeX.append("[ ");
-        for (ParseTree child : children) {
-            treeTeX.append(child.toLaTexTree());
-        }
-        treeTeX.append("]");
-        return treeTeX.toString();*/
     }
 
     /**
-     * Writes the tree as a forest picture. Returns the tree in forest enviroment
+     * Writes the tree as a forest picture. Returns the tree in forest environment
      * using the latex code of the tree
      */
     public String toForestPicture() {
@@ -156,10 +183,16 @@ public class ParseTree {
                 "\\begin{document}\n\n" + toForestPicture() + "\n\n\\end{document}\n%% Local Variables:\n%% TeX-engine: pdflatex\n%% End:";
     }
 
+    /**
+     * @return the name of the current node as a latex string
+     */
     public String toString(){
         return this.getLabel().toTexString();
     }
 
+    /**
+     * @return the root of the tree
+     */
     public ParseTree getRoot() {
         ParseTree currentNode = this;
         while (currentNode.getFather() != null) {

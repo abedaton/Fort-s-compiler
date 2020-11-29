@@ -1,28 +1,49 @@
 package parser;
 
-import java.util.*;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
+import java.util.Arrays;
+
+
+/**
+ * This class represents the rules
+ * It contains all the rules of the grammar
+ */
 public class Rules {
-    Map<Integer, List<String>> rules = new HashMap<Integer, List<String>>();
-    List<String> variables = new ArrayList<>();
+    private final Map<Integer, List<String>> rules = new HashMap<>();
+    private final List<String> variables = new ArrayList<>();
 
     public Rules(){
         initRules();
         initVariable();
     }
 
-    public String getRuleVariable(int ruleNbr) {return variables.get(ruleNbr-1);}
+    public String getRuleVariable(int ruleNbr) {
+        return variables.get(ruleNbr-1);
+    }
 
     public List<String> getRule(int ruleNbr){
         return rules.get(ruleNbr);
     }
 
+    /**
+     * Method use to reverse the result of the rule
+     * @param ruleNbr The number of the rule
+     * @return the result of the rule in reversed
+     */
     public List<String> getRuleReversed(int ruleNbr){
         List<String> rule = new ArrayList<>(getRule(ruleNbr));
         Collections.reverse(rule);
         return rule;
     }
 
+    /**
+     * This method will add all elements to the variables list
+     */
     private void initVariable(){
         variables.add("PROGRAM");
         variables.add("SPACE");
@@ -58,6 +79,9 @@ public class Rules {
         variables.add("READVAR");
     }
 
+    /**
+     * This method will add the rule and the result of the rules in the HashMap
+     */
     private void initRules() {
         rules.put(1, Arrays.asList("SPACE", "BEGINPROG", "PROGNAME", "SPACE", "CODE", "ENDPROG", "SPACE"));
         rules.put(2, Arrays.asList("ENDLINE", "SPACE"));
