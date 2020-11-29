@@ -100,7 +100,7 @@ Spaces         = {Space}+
 // Variable Names
   {VarName}           {return new Symbol(LexicalUnit.VARNAME, yyline, yycolumn, yytext());}
   {ProgName}          {return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn, yytext());}
-  {BadProgName}       {System.err.println("Warning! Program names in uppercase are deprecated: " + yytext()); return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn, yytext());}
+  {BadProgName}       {return new Symbol(LexicalUnit.PROGNAME, yyline, yycolumn, yytext());}
   {EndLine}           {return new Symbol(LexicalUnit.ENDLINE, yyline, yycolumn, "\\n");}
   {Spaces}	          {} // ignore spaces
  "*/"                 {throw new PatternSyntaxException("A comment is closed, but never opened.",yytext(),yyline);}

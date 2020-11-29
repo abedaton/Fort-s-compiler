@@ -11,7 +11,6 @@ import java.util.*;
 
 
 public class Parser {
-    private final FileReader source;
     private final Stack<String> stack = new Stack<String>();
     private final ActionTable actionTable = new ActionTable();
     private final ArrayList<Symbol> symbols;
@@ -19,8 +18,7 @@ public class Parser {
     private ParseTree node;
     private StringBuilder builder;
 
-    public Parser(FileReader source, ArrayList<Symbol> symbols){
-        this.source = source;
+    public Parser(ArrayList<Symbol> symbols){
         this.symbols = symbols;
     }
 
@@ -47,7 +45,7 @@ public class Parser {
         for(String rule : rulesString){
             printRules.append("(").append(rule).append(") ");
             int ruleNumber = Integer.parseInt(rule);
-            printRules.append( rules.getRuleVariable(ruleNumber)+ " -> " + rules.getRule(ruleNumber).toString());
+            printRules.append(rules.getRuleVariable(ruleNumber)).append(" -> ").append(rules.getRule(ruleNumber).toString());
             printRules.append("\n");
 
         }
@@ -79,7 +77,7 @@ public class Parser {
             }
             //System.out.println(stack);
         }
-        while (stack.peek() != "$"){
+        while (!stack.peek().equals("$")){
             Integer ruleNumber = actionTable.getData(stack.peek(), "$");
             if (ruleNumber != null) {
                 stack.pop();
@@ -87,7 +85,7 @@ public class Parser {
                 builder.append(ruleNumber).append(" ");
 
             } else {
-                ;//throw new InvalidSyntaxException("Error: Invalid Syntax", symbol.getLine(), stack.peek(), value.toString());
+                throw new InvalidSyntaxException("Error: EndOfFile found but not expected");
             }
         }
         return builder.toString();

@@ -24,7 +24,6 @@ public class ActionTable {
         if (index.isPresent()){
             return index.getAsInt();
         }
-        System.out.println("No column named: " + name);
         return -1;
     }
 
@@ -33,7 +32,6 @@ public class ActionTable {
         if (index.isPresent()){
             return index.getAsInt();
         }
-        System.out.println("No row named: " + name);
         return -1;
     }
 
