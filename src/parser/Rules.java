@@ -95,8 +95,8 @@ public class Rules {
         rules.put(10, Collections.singletonList("READVAR"));
         rules.put(11, Arrays.asList("VARNAME", ":=", "EXPRARITH"));
         rules.put(12, Arrays.asList("PROD", "EXPRARITHBIS"));
-        rules.put(13, Arrays.asList("+", "PROD"));
-        rules.put(14, Arrays.asList("-", "PROD"));
+        rules.put(13, Arrays.asList("+", "PROD","EXPRARITHBIS"));
+        rules.put(14, Arrays.asList("-", "PROD","EXPRARITHBIS"));
         rules.put(15, new ArrayList<>());
         rules.put(16, Arrays.asList("ATOM", "PRODBIS"));
         rules.put(17, Arrays.asList("*", "ATOM", "PRODBIS"));

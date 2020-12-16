@@ -19,21 +19,65 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a7c3d3-3731-45b3-86fe-ce8593302400" name="Default Changelist" comment="added purge">
+    <list default="true" id="68a7c3d3-3731-45b3-86fe-ce8593302400" name="Default Changelist" comment="Added javadoc">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/JavaDoc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Part1_Bedaton_Defraene.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/part1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generator/AbstractSyntaxTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/FS_file/testplusplus.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/ActionTable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/ActionTable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/InvalidSyntaxException.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/InvalidSyntaxException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/LexicalVariable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/LexicalVariable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/ParseTree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/ParseTree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Parser.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Parser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Rules.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Rules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Variable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Variable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/FlexManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/FlexManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalAnalyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalAnalyzer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalUnit.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalUnit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/Symbol.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/Symbol.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/glowing-pancake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/glowing-pancake.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/ActionTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ActionTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/InvalidSyntaxException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/InvalidSyntaxException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/LexicalVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/LexicalVariable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parser/ParseTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ParseTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parser/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Rules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Variable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="AnnotationType" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,14 +90,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\antoi\Desktop\ULB\Projets\compiling\glowing-pancake\solution_pt2" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="glowing-pancake" />
-      <option name="PROGRAM_PARAMETERS" value="-v -wt latex.tex test/FS_file/DidYouMean.fs" />
+      <option name="PROGRAM_PARAMETERS" value="test/FS_file/Factorial.fs" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
         <option name="IS_SUBST" value="false" />
@@ -64,19 +117,6 @@
           <ENTRY IS_ENABLED="true" PARSER="runconfig" />
         </ENTRIES>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,7 +136,13 @@
       <workItem from="1606508378194" duration="613000" />
       <workItem from="1606513485494" duration="2424000" />
       <workItem from="1606562784691" duration="15223000" />
-      <workItem from="1606658751308" duration="5697000" />
+      <workItem from="1606658751308" duration="6115000" />
+      <workItem from="1606668764109" duration="773000" />
+      <workItem from="1607335590565" duration="1000" />
+      <workItem from="1607451763697" duration="3171000" />
+      <workItem from="1607771933620" duration="7000" />
+      <workItem from="1607788398497" duration="8118000" />
+      <workItem from="1608026226306" duration="17152000" />
     </task>
     <task id="LOCAL-00001" summary="added more tests and throw">
       <created>1606655703963</created>
@@ -126,7 +172,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606658714777</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added javadoc">
+      <created>1606664537476</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606664537476</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added javadoc">
+      <created>1606664606604</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606664606604</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,37 +208,55 @@
     <MESSAGE value="added more tests and throw" />
     <MESSAGE value="updated main" />
     <MESSAGE value="added purge" />
-    <option name="LAST_COMMIT_MESSAGE" value="added purge" />
+    <MESSAGE value="Added javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added javadoc" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="525" y="48" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606657309432">
+    <state x="552" y="161" key="#Plugins" timestamp="1607789435599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="525" y="48" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606657309432" />
+    <state x="552" y="161" key="#Plugins/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1607789435599" />
+    <state x="525" y="48" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608032270455">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="525" y="48" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608032270455" />
     <state x="692" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606655339576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="692" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606655339576" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1608044654670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2685" y="238" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@1920.12.1920.1040" timestamp="1607454237579" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608044654670" />
+    <state x="362" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607793919733">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="362" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1607793919733" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606664185293">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606664185293" />
-    <state width="1877" height="288" key="GridCell.Tab.0.bottom" timestamp="1606658736159">
+    <state width="1877" height="294" key="GridCell.Tab.0.bottom" timestamp="1608063156874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658736159" />
-    <state width="1877" height="288" key="GridCell.Tab.0.center" timestamp="1606658736159">
+    <state width="1877" height="294" key="GridCell.Tab.0.bottom/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156874" />
+    <state width="1877" height="294" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608046970841" />
+    <state width="1877" height="294" key="GridCell.Tab.0.center" timestamp="1608063156873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.center/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658736159" />
-    <state width="1877" height="288" key="GridCell.Tab.0.left" timestamp="1606658736159">
+    <state width="1877" height="294" key="GridCell.Tab.0.center/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156873" />
+    <state width="1877" height="294" key="GridCell.Tab.0.center/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608046970841" />
+    <state width="1877" height="294" key="GridCell.Tab.0.left" timestamp="1608063156873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.left/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658736159" />
-    <state width="1877" height="288" key="GridCell.Tab.0.right" timestamp="1606658736159">
+    <state width="1877" height="294" key="GridCell.Tab.0.left/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156873" />
+    <state width="1877" height="294" key="GridCell.Tab.0.left/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608046970841" />
+    <state width="1877" height="294" key="GridCell.Tab.0.right" timestamp="1608063156874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.right/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658736159" />
+    <state width="1877" height="294" key="GridCell.Tab.0.right/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156874" />
+    <state width="1877" height="294" key="GridCell.Tab.0.right/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608046970841" />
     <state width="1877" height="288" key="GridCell.Tab.1.bottom" timestamp="1606658736160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -195,17 +273,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="288" key="GridCell.Tab.1.right/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658736159" />
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1606658717500">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1608032145990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606658717500" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608032145990" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1606664609221">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606664609221" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606654273731">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606654273731" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606654884831">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608032890591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606654884831" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608032890591" />
   </component>
 </project>

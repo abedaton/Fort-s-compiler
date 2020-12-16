@@ -1,5 +1,4 @@
 scannerPath = src/scanner
-parserPath = src/parser
 jarOut = dist/part2.jar
 docOut = doc/javadoc
 

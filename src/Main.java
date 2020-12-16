@@ -1,6 +1,7 @@
 
 import parser.InvalidSyntaxException;
 import parser.Parser;
+import generator.Generator;
 import scanner.FlexManager;
 
 import java.io.FileReader;
@@ -29,7 +30,17 @@ public class Main {
         // Display the usage when the number of arguments is wrong (should be 1)
 
         // Open the file given in argument
-        execRight(args);
+        //execRight(args);
+
+        FileReader source = new FileReader(args[0]);
+
+        FlexManager flexManager = new FlexManager(source);
+        flexManager.parseFlex();
+        Parser parser = new Parser(flexManager.getSymbols());
+        System.out.println(parser.parse());
+//        System.out.println(parser.getParseTree().toLaTeX());
+        Generator generator = new Generator(parser.getParseTree());
+//        System.out.println(generator.getSyntaxTree().toLaTex());
     }
 
     /**

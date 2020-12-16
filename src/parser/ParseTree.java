@@ -17,7 +17,7 @@ import java.util.ListIterator;
  */
 public class ParseTree {
     private Variable label; // The label of the root of the tree
-    private final List<ParseTree> children; // Its children, which are trees themselves
+    private List<ParseTree> children; // Its children, which are trees themselves
     private ParseTree father;
 
     /**
@@ -97,6 +97,14 @@ public class ParseTree {
      */
     public List<ParseTree> getChildren(){
         return this.children;
+    }
+
+    /**
+     * Set the children of the current node
+     * @param children the new children of the current node
+     */
+    public void setChildren(List<ParseTree> children){
+        this.children = children;
     }
 
     /**
