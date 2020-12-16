@@ -1,3 +1,10 @@
 *.class
 *.java~
 LexicalAnalyzer.java
+doc/
+lib/
+more/
+dist/
+out/
+bin/
+.idea/
