@@ -107,6 +107,8 @@ public class ParseTree {
         this.children = children;
     }
 
+    public boolean hasChildren(){return !this.children.isEmpty();}
+
     /**
      * This method gets the first child of the current node
      * @return the first child of the current node

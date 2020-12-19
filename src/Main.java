@@ -40,7 +40,7 @@ public class Main {
         System.out.println(parser.parse());
 //        System.out.println(parser.getParseTree().toLaTeX());
         Generator generator = new Generator(parser.getParseTree());
-//        System.out.println(generator.getSyntaxTree().toLaTex());
+        System.out.println(generator.getSyntaxTree().toLaTex());
     }
 
     /**
