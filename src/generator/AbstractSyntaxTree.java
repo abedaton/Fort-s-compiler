@@ -1,5 +1,6 @@
 package generator;
 
+import com.sun.javafx.image.impl.General;
 import parser.LexicalVariable;
 import parser.ParseTree;
 import parser.Variable;
@@ -9,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AbstractSyntaxTree {
-    public ParseTree tree;
+    private final ParseTree tree;
     private final ArrayList<String> useful = new ArrayList<>(Arrays.asList("+", "-", "/", "*", "=", ">", "VARNAME:", "NUMBER:"));
-
     public AbstractSyntaxTree(ParseTree tree){
         this.tree = tree;
         purge();
@@ -99,6 +99,10 @@ public class AbstractSyntaxTree {
         for (int i = 0; i < tree.getChildren().size(); i++){
             inOrder(tree.getChildren().get(i));
         }
-        System.out.print("" + tree + ", ");
+        //System.out.print("" + tree + ", ");
+    }
+
+    public void inOrder(){
+        inOrder(tree);
     }
 }

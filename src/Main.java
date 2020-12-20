@@ -38,9 +38,11 @@ public class Main {
         flexManager.parseFlex();
         Parser parser = new Parser(flexManager.getSymbols());
         System.out.println(parser.parse());
-//        System.out.println(parser.getParseTree().toLaTeX());
+        System.out.println(parser.getParseTree().toLaTeX());
         Generator generator = new Generator(parser.getParseTree());
         System.out.println(generator.getSyntaxTree().toLaTex());
+        generator.createLLVMFile("llvm.ll");
+
     }
 
     /**
