@@ -37,11 +37,11 @@ public class Main {
         FlexManager flexManager = new FlexManager(source);
         flexManager.parseFlex();
         Parser parser = new Parser(flexManager.getSymbols());
-        System.out.println(parser.parse());
-        System.out.println(parser.getParseTree().toLaTeX());
+        parser.parse();
         Generator generator = new Generator(parser.getParseTree());
-        System.out.println(generator.getSyntaxTree().toLaTex());
-        generator.createLLVMFile("llvm.ll");
+        if (args.length == 3 && args[1].equals("-o")) {
+            generator.createLLVMFile(args[2]);
+        }
 
     }
 

@@ -1,6 +1,7 @@
 BEGINPROG Read
 
 READ(b)
+b := b + 4
 PRINT(b)
 
 ENDPROG
