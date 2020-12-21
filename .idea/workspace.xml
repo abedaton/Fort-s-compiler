@@ -19,46 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a7c3d3-3731-45b3-86fe-ce8593302400" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/generator/Generator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FS_file/ifelse.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FS_file/usevar.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/FS_file/while.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/package-list" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/package-list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/ActionTable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/ActionTable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/InvalidSyntaxException.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/InvalidSyntaxException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/LexicalVariable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/LexicalVariable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/ParseTree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/ParseTree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Parser.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Parser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Rules.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Rules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/Variable.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/Variable.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/parser/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/parser/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/FlexManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/FlexManager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalAnalyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalAnalyzer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalUnit.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/LexicalUnit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/Symbol.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/Symbol.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/scanner/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/scanner/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/javadoc/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generator/AbstractSyntaxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generator/AbstractSyntaxTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generator/LLVMGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generator/LLVMGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FS_file/read.fs" beforeDir="false" afterPath="$PROJECT_DIR$/test/FS_file/read.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FS_file/testplusplus.fs" beforeDir="false" afterPath="$PROJECT_DIR$/test/FS_file/testplusplus.fs" afterDir="false" />
+    <list default="true" id="68a7c3d3-3731-45b3-86fe-ce8593302400" name="Default Changelist" comment="update doc">
+      <change afterPath="$PROJECT_DIR$/dist/part2.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +126,7 @@
       <workItem from="1608387448290" duration="12137000" />
       <workItem from="1608457030973" duration="13330000" />
       <workItem from="1608471583475" duration="25825000" />
-      <workItem from="1608545774590" duration="12064000" />
+      <workItem from="1608545774590" duration="12402000" />
     </task>
     <task id="LOCAL-00001" summary="added more tests and throw">
       <created>1606655703963</created>
@@ -229,7 +191,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608467447524</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update">
+      <created>1608570777408</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608570777408</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update doc">
+      <created>1608570850110</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608570850110</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +230,8 @@
     <MESSAGE value="Added javadoc" />
     <MESSAGE value="Part3" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="update doc" />
   </component>
   <component name="WindowStateProjectService">
     <state x="647" y="265" key="#Console" timestamp="1608214088629">
@@ -296,29 +273,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606664185293" />
-    <state width="1877" height="415" key="GridCell.Tab.0.bottom" timestamp="1608570715928">
+    <state width="1877" height="415" key="GridCell.Tab.0.bottom" timestamp="1608570734214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="294" key="GridCell.Tab.0.bottom/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156874" />
-    <state width="1877" height="415" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570715928" />
+    <state width="1877" height="415" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570734214" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608504124648" />
-    <state width="1877" height="415" key="GridCell.Tab.0.center" timestamp="1608570715927">
+    <state width="1877" height="415" key="GridCell.Tab.0.center" timestamp="1608570734214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="294" key="GridCell.Tab.0.center/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156873" />
-    <state width="1877" height="415" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570715927" />
+    <state width="1877" height="415" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570734214" />
     <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608504124648" />
-    <state width="1877" height="415" key="GridCell.Tab.0.left" timestamp="1608570715927">
+    <state width="1877" height="415" key="GridCell.Tab.0.left" timestamp="1608570734214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="294" key="GridCell.Tab.0.left/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156873" />
-    <state width="1877" height="415" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570715927" />
+    <state width="1877" height="415" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570734214" />
     <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608504124648" />
-    <state width="1877" height="415" key="GridCell.Tab.0.right" timestamp="1608570715927">
+    <state width="1877" height="415" key="GridCell.Tab.0.right" timestamp="1608570734214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="294" key="GridCell.Tab.0.right/-1920.12.1920.1040/1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1608063156874" />
-    <state width="1877" height="415" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570715927" />
+    <state width="1877" height="415" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570734214" />
     <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608504124648" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1608504124648">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -344,10 +321,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608032145990" />
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1608467451081">
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1608570855796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608103119897" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570855796" />
     <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608467451081" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1608472418431">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -357,10 +334,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="570" y="146" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608391724675" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608570190996">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608570816500">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570190996" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570816500" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1606654273731" />
     <state x="690" y="270" key="extract.method.dialog" timestamp="1608490423764">
       <screen x="0" y="0" width="1920" height="1040" />
