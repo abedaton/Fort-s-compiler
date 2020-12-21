@@ -1,5 +1,5 @@
 scannerPath = src/scanner
-jarOut = dist/part2.jar
+jarOut = dist/part3.jar
 docOut = doc/javadoc
 
 all:

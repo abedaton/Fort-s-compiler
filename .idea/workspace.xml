@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68a7c3d3-3731-45b3-86fe-ce8593302400" name="Default Changelist" comment="update doc">
-      <change afterPath="$PROJECT_DIR$/dist/part2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +126,7 @@
       <workItem from="1608387448290" duration="12137000" />
       <workItem from="1608457030973" duration="13330000" />
       <workItem from="1608471583475" duration="25825000" />
-      <workItem from="1608545774590" duration="12402000" />
+      <workItem from="1608545774590" duration="12455000" />
     </task>
     <task id="LOCAL-00001" summary="added more tests and throw">
       <created>1606655703963</created>
@@ -205,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608570850110</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update doc">
+      <created>1608571081541</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608571081541</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,10 +328,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608032145990" />
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1608570855796">
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1608571083203">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608570855796" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.12.1920.1040/1920.12.1920.1040@0.0.1920.1040" timestamp="1608571083203" />
     <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.12.1920.1040/-1920.12.1920.1040@0.0.1920.1040" timestamp="1608467451081" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1608472418431">
       <screen x="0" y="0" width="1920" height="1040" />
